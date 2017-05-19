@@ -7,22 +7,22 @@ pd 4
 PACMAN X MAZE
 --------------------------------------------------------------
 --------------------------------------------------------------
-Prioritization:
--Develop the main maze with different levels
+Prioritization: 
+-Develop the main maze, characters, and dots
+-Pacman should function by its rules (movements, and eating)
 -Move objects (using up, down, right and left) without touching the walls of the maze in processing
--Develop the solutions and hints for the mazes using quadTrees and backtracking
--Have a mini game at the end of each level as a pass to the next level (can be any simple game) (ex. flip and match, and tic-tac-toe will both uses 2D matrix)
 --------------------------------------------------------------
 --------------------------------------------------------------
 Extra features:
 -Multiplayer??
--Add in moving monsters that you need to avoid
--Decorations
+-Difficulty levels that determine the speed of the ghosts
+-large dots called Power Pellets that temporarily give the player the ability to eat the ghosts
+-A.I. ghosts that follow the player 
 --------------------------------------------------------------
 --------------------------------------------------------------
 Timeline: 
--05/24:Finish developing the maze and its solution
--05/28:Finish mini-games
+-05/24:Finish developing the maze and movements of the character
+-05/28:Finish the actual "eating" and gaining score section -> complete the full game
 -05/29-06/02:Work on processing
 -06/03-06/05:Debug and possibly add in extra features 
 --------------------------------------------------------------
