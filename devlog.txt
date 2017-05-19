@@ -1,1 +1,36 @@
 BroccoliTree
+Melanie Chow
+Xin Yi Chen
+Gian Tricarico
+pd 4
+---------------------
+PACMAN X MAZE
+
+OBSTACLES OVERCOME:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+UNRESOLVED ISSUES:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+COOL STUFF LEARNED:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MID-DEVELOPMENT DESIGN CHANGES: 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LESSONS LEARNED:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2017-05-18
+--------------------------------------------------------------
+Xin Yi Chen :: Registered our team repo. Created and linked our group repo. Also did the devlog, and the plan folder.  
+Melanie Chow ::  
+Gian Tricarico :: 
+--------------------------------------------------------------
+2017-05-19
+--------------------------------------------------------------
