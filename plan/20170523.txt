@@ -1,0 +1,31 @@
+BroccoliTree
+Melanie Chow
+Xin Yi Chen
+Gian Tricarico
+pd 4
+---------------------
+PACMAN
+--------------------------------------------------------------
+--------------------------------------------------------------
+Prioritization: 
+-Develop the main maze, characters, and dots classes
+-Pacman should function by its rules (movements, and eating)
+-Eaten dots reappear after a few seconds
+-Move characters (using up, down, right and left) without touching the walls of the maze in processing
+-Add in the in-between "tower" game
+-increase speed of the ghosts after every 1000 points
+--------------------------------------------------------------
+--------------------------------------------------------------
+Extra features:
+-Multiplayer??
+-large dots called Power Pellets that temporarily give the player the ability to eat the ghosts
+-A.I. ghosts that follow the player 
+--------------------------------------------------------------
+--------------------------------------------------------------
+Timeline: 
+-05/24:Finish developing the maze and movements of the character
+-05/28:Finish the actual "eating" and gaining score section -> complete the full game
+-05/29-06/02:Work on processing
+-06/03-06/05:Debug and possibly add in extra features 
+--------------------------------------------------------------
+--------------------------------------------------------------
