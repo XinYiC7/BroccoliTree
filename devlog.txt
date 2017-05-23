@@ -4,7 +4,7 @@ Xin Yi Chen
 Gian Tricarico
 pd 4
 ---------------------
-PACMAN X MAZE
+PACMAN
 
 OBSTACLES OVERCOME:
 
@@ -33,4 +33,8 @@ Xin Yi Chen :: Registered our team repo. Created and linked our group repo. Also
 2017-05-19
 --------------------------------------------------------------
 Xin Yi Chen & Gian Tricarico :: Edited our proposal and plan for 05/19
+--------------------------------------------------------------
+2017-05-22
+--------------------------------------------------------------
+Xin Yi Chen :: Edited our plan for 05/23
 --------------------------------------------------------------
