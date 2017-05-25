@@ -23,6 +23,9 @@ MID-DEVELOPMENT DESIGN CHANGES:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 LESSONS LEARNED:
+-In Processing, you don't need accessors and mutators because the variables
+and methods have a default privacy such that all of the files in the folder can
+access them.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -42,3 +45,6 @@ Xin Yi Chen :: Edited our plan for 05/23
 --------------------------------------------------------------
 Xin Yi Chen :: Edited our proposal and uml diagram
 --------------------------------------------------------------
+2017-05-25
+--------------------------------------------------------------
+Gian Tricarico :: Create skeletons for PacMan (main class) and Character
