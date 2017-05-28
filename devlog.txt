@@ -54,3 +54,8 @@ Gian Tricarico :: Create skeletons for PacMan (main class) and Character
 --------------------------------------------------------------
 Melanie Chow :: Created dot skeleton.
 --------------------------------------------------------------
+2017-05-28
+--------------------------------------------------------------
+Melanie Chow :: Created block class to hardcode map. Thought of 2 possible game designs for the map.
+--------------------------------------------------------------
+
