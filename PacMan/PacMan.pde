@@ -21,19 +21,27 @@ void draw() {
     for (int b = 0; b < map[0].length; b++) {
 
       if ( map[a][b].equals("p")) {
-        fill(255, 255, 0);
+        //stroke(255, 255, 0);
+        fill(255,255,0);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       } 
       else if (map[a][b].equals("d")) {
-        fill(255,255,255);
-        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        noStroke();
+        fill(255,182,193);
+        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 5, 5);
       } 
       else if (map[a][b].equals("t")) {
-        fill(255, 0, 0);
+        //stroke(255, 0, 0);
+        fill(255,0,0);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       } 
+      else if (map[a][b].equals("@")){
+        fill(255,255,255);
+        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+      }
       else {
-        fill(0, 0, 255);
+        //stroke(0, 0, 255);
+        fill(0,0,255);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       }
     }
