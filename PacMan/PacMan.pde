@@ -9,10 +9,10 @@ void miniGame()
 {
   // Implementation (after completion of MVP)
 }
-int _blocksize=30;
+int _blocksize=25;
 String[][] map = new String[32][32];
 void setup() {
-  size(960, 960);
+  size(800, 950);
   background(0, 0, 0);
   setMap();
 }
@@ -22,19 +22,19 @@ void draw() {
 
       if ( map[a][b].equals("p")) {
         fill(255, 255, 0);
-        rect(b*_blocksize, a*_blocksize, _blocksize, _blocksize);
+        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       } 
       else if (map[a][b].equals("d")) {
         fill(255,255,255);
-        rect(b*_blocksize, a*_blocksize, _blocksize, _blocksize);
+        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       } 
       else if (map[a][b].equals("t")) {
         fill(255, 0, 0);
-        rect(b*_blocksize, a*_blocksize, _blocksize, _blocksize);
+        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       } 
       else {
         fill(0, 0, 255);
-        rect(b*_blocksize, a*_blocksize, _blocksize, _blocksize);
+        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       }
     }
   }

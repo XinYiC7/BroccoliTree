@@ -1,4 +1,4 @@
-class dot{
+class Dot{
  int point;
  color c;
  int xPos;
@@ -6,7 +6,7 @@ class dot{
  boolean isEaten;
  int whatAmI;
  
- dot(int cololor, int whatAmI, int x, int y){
+ Dot(int cololor, int whatAmI, int x, int y){
  }
 
 }
