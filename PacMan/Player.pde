@@ -1,4 +1,4 @@
-class Player extends Character{
+  class Player extends Character{
     int score;
     int numLives;
     boolean power;

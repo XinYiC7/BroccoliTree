@@ -6,7 +6,7 @@ Block[] map=new Block[650*300];
 
 
   void setup(){
-   size(650,300);
+   size(960,960);
    background(0,0,0);
    for (int i=0; i<map.length; i++){
       if (i<_map){
