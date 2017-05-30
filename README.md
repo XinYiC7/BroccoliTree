@@ -10,10 +10,13 @@ Our version of Pac-Man is similar to the original game but with little changes t
 
 We will use queue to store the dots that were eaten by their x and y position values (enqueue) and make the dots reappear again after few seconds (dequeue their position and make them appear on the 2D matrix maze). 
 
-The mini game “stack the tower” will use stack structure in that the next falling rectangle is the same size as the rectangle on top of the stack.
+The mini game “stack the tower” will use stack structure in that the next falling rectangle is the same size as the rectangle on top of the stack. Every time a portion of the tower is missed, part of the rectangle is cut off. Once there is no more portions of the rectangle left to build, the game ends. 
 
-We will also use 2D matrix to create the maze/board (including all the characters and dots).
+The game then progresses with faster moving ghosts. 
+ 
+A 2D matrix is used to create the maze/board (including all the characters and dots).
 
+*for the future: As of now a csv file will be used to hold the highscores so that these scores can be saved.
 
 # Launch instruction
 
