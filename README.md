@@ -22,7 +22,11 @@ A 2D matrix is used to create the maze/board (including all the characters and d
 
 1. Download Processing
 2. Clone this repo
+```
    git clone https://github.com/XinYiC7/BroccoliTree.git
+```
 3. Open PacMan directory
 4. Run the program
+```
    processing PacMan.pde
+```
