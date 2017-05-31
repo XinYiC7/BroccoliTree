@@ -9,12 +9,12 @@ void miniGame()
 {
   // Implementation (after completion of MVP)
 }
-int _blocksize=25;
+int _blocksize=20;
 String[][] map = new String[32][32];
 Character player = new Player(null);
 
 void setup() {
-  size(800, 950);
+  size(680, 720);
   background(0, 0, 0);
   setMap();
 }
@@ -41,13 +41,13 @@ void drawMap() {
         //stroke(255, 255, 0);
         noStroke();
         fill(255, 255, 0);
-        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 12, 12);
+        ellipse(b*_blocksize+_blocksize/2, a*_blocksize+75+_blocksize/2, _blocksize/2, _blocksize/2);
       } 
       //normal dots
       else if (map[a][b].equals("d")) {
         noStroke();
         fill(255, 182, 193);
-        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 4, 4);
+        ellipse(b*_blocksize+_blocksize/2, a*_blocksize+75+_blocksize/2, 4, 4);
       } 
       //broccoli tree
       else if (map[a][b].equals("t")) {
@@ -58,7 +58,7 @@ void drawMap() {
       //start point
       else if (map[a][b].equals("@")) {
         fill(255, 255, 255);
-        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, _blocksize, _blocksize);
+        ellipse(b*_blocksize+_blocksize/2, a*_blocksize+75+_blocksize/2, _blocksize, _blocksize);
         player.xPos = a;
         player.yPos = b;
       }
