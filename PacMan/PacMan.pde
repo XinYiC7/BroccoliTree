@@ -11,6 +11,7 @@ void miniGame()
 }
 int _blocksize=25;
 String[][] map = new String[32][32];
+Character player = new Player(null);
 
 void setup() {
   size(800, 950);
@@ -57,6 +58,13 @@ void drawMap() {
       //start point
       else if (map[a][b].equals("@")) {
         fill(255, 255, 255);
+        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, _blocksize, _blocksize);
+        player.xPos = a;
+        player.yPos = b;
+      }
+      //eaten dot space or place you have been
+      else if (map[a][b].equals("x")) {
+        fill(0, 0, 0);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       }
       //walls

@@ -18,6 +18,9 @@ class Character {
 
   //------------------------ Methods ------------------------
 
+  Character(){
+  }
+  
   void move()
   {
     // Implementation

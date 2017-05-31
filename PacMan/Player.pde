@@ -3,7 +3,8 @@
     int numLives;
     boolean power;
 
-    Player( String name ){
+    Player( String name){
+      super.name = name;
     }
 
     boolean hasPower(){
