@@ -1,0 +1,29 @@
+BroccoliTree
+Melanie Chow
+Xin Yi Chen
+Gian Tricarico
+pd 4
+---------------------
+PACMAN
+--------------------------------------------------------------
+--------------------------------------------------------------
+Prioritization: 
+-Make pacman move and eat properly
+-Eaten dots reappear after a few seconds
+-large dots called Power Pellets that temporarily give the player the ability to eat the ghosts
+-Move characters (using up, down, right and left) without touching the walls of the maze in processing
+-Add in ghosts and jail
+--------------------------------------------------------------
+--------------------------------------------------------------
+Extra features:
+-Multiplayer??
+-Add in the in-between "tower" game
+-A.I. ghosts that follow the player 
+-increase speed of the ghosts after every 1000 points
+--------------------------------------------------------------
+--------------------------------------------------------------
+Timeline: 
+-06/02:Finish the game
+-06/03-06/05:Debug and possibly add in extra features 
+--------------------------------------------------------------
+--------------------------------------------------------------
