@@ -12,15 +12,28 @@ void miniGame()
 int _blocksize=20;
 String[][] map = new String[32][32];
 Character player = new Player(null);
+int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
+PImage img; //startscreen
 
 void setup() {
   size(680, 720);
   background(0, 0, 0);
   setMap();
+  img=loadImage("tempstart.jpg");
 }
 
 void draw() {
-  drawMap();
+  if (screen==0){
+    image(img,0,0);
+  }
+  if (screen==1){
+    background(0,0,0);
+    drawMap();
+  }
+}
+
+void mouseClicked(){
+  screen=1;
 }
 
 void setMap() {
