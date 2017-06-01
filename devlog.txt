@@ -59,4 +59,8 @@ Melanie Chow :: Created dot skeleton.
 Melanie Chow :: Created block class to hardcode map. Thought of 2 possible game designs for the map.
 Xin Yi Chen :: Coded the map for PacMan. 
 --------------------------------------------------------------
+2017-06-01
+--------------------------------------------------------------
+Xin Yi Chen :: Wrote the method to make PacMan move appropriately.
+--------------------------------------------------------------
 
