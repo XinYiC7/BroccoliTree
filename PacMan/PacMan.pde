@@ -9,31 +9,19 @@ void miniGame()
 {
   // Implementation (after completion of MVP)
 }
-int _blocksize=20;
-String[][] map = new String[32][32];
+int _blocksize=25;
 Character player = new Player(null);
-int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
-PImage img; //startscreen
-
+static String[][] map = new String[32][32];
 void setup() {
-  size(680, 720);
+  size(800, 950);
   background(0, 0, 0);
   setMap();
-  img=loadImage("tempstart.jpg");
 }
 
 void draw() {
-  if (screen==0){
-    image(img,0,0);
-  }
-  if (screen==1){
-    background(0,0,0);
-    drawMap();
-  }
-}
-
-void mouseClicked(){
-  screen=1;
+  drawMap();
+  delay(1000);
+  
 }
 
 void setMap() {
@@ -54,13 +42,13 @@ void drawMap() {
         //stroke(255, 255, 0);
         noStroke();
         fill(255, 255, 0);
-        ellipse(b*_blocksize+_blocksize/2, a*_blocksize+75+_blocksize/2, _blocksize/2, _blocksize/2);
+        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 12, 12);
       } 
       //normal dots
       else if (map[a][b].equals("d")) {
         noStroke();
         fill(255, 182, 193);
-        ellipse(b*_blocksize+_blocksize/2, a*_blocksize+75+_blocksize/2, 4, 4);
+        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 4, 4);
       } 
       //broccoli tree
       else if (map[a][b].equals("t")) {
@@ -71,9 +59,7 @@ void drawMap() {
       //start point
       else if (map[a][b].equals("@")) {
         fill(255, 255, 255);
-        ellipse(b*_blocksize+_blocksize/2, a*_blocksize+75+_blocksize/2, _blocksize, _blocksize);
-        player.xPos = a;
-        player.yPos = b;
+        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, _blocksize, _blocksize);
       }
       //eaten dot space or place you have been
       else if (map[a][b].equals("x")) {
@@ -88,4 +74,30 @@ void drawMap() {
       }
     }
   }
+}
+
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == UP) {
+      while(player.move(1) != false){
+        player.move(1);
+      }
+    } else if (keyCode == DOWN) {
+      while(player.move(2) != false){
+        player.move(2);
+      }
+    } else if (keyCode == RIGHT) {
+      while(player.move(3) != false){
+        //delay(1000);
+        player.move(3);
+      }
+    } else if (keyCode == LEFT) {
+      while(player.move(4) != false){
+        //delay(1000);
+        player.move(4);
+      }
+    } else {
+    }
+  }
+  drawMap();
 }

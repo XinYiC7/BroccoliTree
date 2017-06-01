@@ -1,4 +1,4 @@
-class Ghost{
+class Ghost extends Character{
     int state;
     
     Ghost(){
