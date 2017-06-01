@@ -61,6 +61,6 @@ Xin Yi Chen :: Coded the map for PacMan.
 --------------------------------------------------------------
 2017-06-01
 --------------------------------------------------------------
-Xin Yi Chen :: Wrote the method to make PacMan move appropriately.
+Xin Yi Chen :: Wrote the method to make PacMan move appropriately. Did the plan for tomorrow.
 --------------------------------------------------------------
 
