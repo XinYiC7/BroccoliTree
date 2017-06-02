@@ -4,8 +4,10 @@
 
 //------------------------ Instance variables ------------------------
 
+// Each block in the game's grid is made up of _blocksize * _blocksize pixels:
 int _blocksize = 25;
 Character player = new Player(null);
+// 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
 
 //------------------------ Methods ------------------------
@@ -74,6 +76,12 @@ void drawMap() {
       else if (map[a][b].equals("x")) {
         fill(0, 0, 0);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+      }
+      // Jail for ghosts:
+      else if (map[a][b].equals("j")) {
+        noStroke();
+        fill(225, 225, 225);
+        rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
       }
       //walls
       else {

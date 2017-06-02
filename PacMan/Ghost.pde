@@ -1,13 +1,21 @@
-class Ghost extends Character{
-    int state;
-    
-    Ghost(){
-    }
+/*
+class Ghost: for the ghosts that try to kill Pacman
+ For now, movement is randomized.
+ */
+class Ghost extends Character {
 
-    boolean inJail(){
-      return false;
-    }
+  //------------------------ Instance variables ------------------------
 
-    void normalize(){
-    }
+  int state;
+  // The rest of the variables are inherited from class Character.
+
+  Ghost() {
+  }
+
+  boolean inJail() {
+    return false;
+  }
+
+  void normalize() {
+  }
 }
