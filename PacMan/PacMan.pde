@@ -2,6 +2,14 @@
 // Roster: Gian "Giant" Tricarico, Xin Yi Chen, Melanie "MChow" Chow
 // APCS2 pd4
 
+//------------------------ Instance variables ------------------------
+
+int _blocksize = 25;
+Character player = new Player(null);
+static String[][] map = new String[32][32];
+
+//------------------------ Methods ------------------------
+
 /*
 facilitates progress of tower minigame (helper method for draw)
  */
@@ -9,9 +17,7 @@ void miniGame()
 {
   // Implementation (after completion of MVP)
 }
-int _blocksize = 25;
-Character player = new Player(null);
-static String[][] map = new String[32][32];
+
 
 
 
@@ -25,7 +31,6 @@ void draw() {
   drawMap();
   frameRate(5);
   player.move(player.direction);
-  
 }
 
 void setMap() {
@@ -86,28 +91,28 @@ void keyPressed() {
       player.direction = 1;
       /*
       while(player.move(1) != false){
-        player.move(1);
-      }*/
+       player.move(1);
+       }*/
     } else if (keyCode == DOWN) {
       player.direction = 2;
       /*
       while(player.move(2) != false){
-        player.move(2);
-      }*/
+       player.move(2);
+       }*/
     } else if (keyCode == RIGHT) {
       player.direction = 3;
       /*
       while(player.move(3) != false){
-        //delay(1000);
-        player.move(3);
-      }*/
+       //delay(1000);
+       player.move(3);
+       }*/
     } else if (keyCode == LEFT) {
       player.direction = 4;
       /*
       while(player.move(4) != false){
-        //delay(1000);
-        player.move(4);
-      }*/
+       //delay(1000);
+       player.move(4);
+       }*/
     } else {
     }
   }
