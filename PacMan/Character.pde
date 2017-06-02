@@ -21,6 +21,7 @@ class Character {
     speed = 1;
     xPos = 24;
     yPos = 28;
+    direction = 0;
   }
 
   //representation of the values of x: 1-UP, 2-DOWN, 3-RIGHT, 4-LEFT 
@@ -32,11 +33,10 @@ class Character {
       if (!PacMan.map[yPos-1][xPos].equals("#")) {
         oldPos = yPos;
         yPos -= speed;
-
+        PacMan.map[yPos][xPos] = "@";
         for (int i = oldPos; i > yPos; i --) {
           PacMan.map[i][xPos] = "x";
-        }
-        PacMan.map[yPos][xPos] = "@";
+        }       
         return true;
       } 
       return false;
@@ -66,7 +66,7 @@ class Character {
         return true;
       } 
       return false;
-    } else {
+    } else if (x == 4) {
       if (!PacMan.map[yPos][xPos-1].equals("#")) { 
         oldPos = xPos;
         xPos -= speed;
@@ -78,7 +78,9 @@ class Character {
         PacMan.map[yPos][xPos] = "@";
 
         return true;
-      } 
+      }
+      return false;
+    } else {      
       return false;
     }
   }

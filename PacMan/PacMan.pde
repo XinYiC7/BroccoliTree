@@ -9,9 +9,12 @@ void miniGame()
 {
   // Implementation (after completion of MVP)
 }
-int _blocksize=25;
+int _blocksize = 25;
 Character player = new Player(null);
 static String[][] map = new String[32][32];
+
+
+
 void setup() {
   size(800, 950);
   background(0, 0, 0);
@@ -20,7 +23,8 @@ void setup() {
 
 void draw() {
   drawMap();
-  delay(1000);
+  frameRate(5);
+  player.move(player.direction);
   
 }
 
@@ -39,7 +43,7 @@ void drawMap() {
     for (int b = 0; b < map[0].length; b++) {
       //power pellets
       if ( map[a][b].equals("p")) {
-        //stroke(255, 255, 0);
+        stroke(255, 255, 0);
         noStroke();
         fill(255, 255, 0);
         ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 12, 12);
@@ -79,25 +83,32 @@ void drawMap() {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
+      player.direction = 1;
+      /*
       while(player.move(1) != false){
         player.move(1);
-      }
+      }*/
     } else if (keyCode == DOWN) {
+      player.direction = 2;
+      /*
       while(player.move(2) != false){
         player.move(2);
-      }
+      }*/
     } else if (keyCode == RIGHT) {
+      player.direction = 3;
+      /*
       while(player.move(3) != false){
         //delay(1000);
         player.move(3);
-      }
+      }*/
     } else if (keyCode == LEFT) {
+      player.direction = 4;
+      /*
       while(player.move(4) != false){
         //delay(1000);
         player.move(4);
-      }
+      }*/
     } else {
     }
   }
-  drawMap();
 }
