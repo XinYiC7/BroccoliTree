@@ -5,10 +5,12 @@
 //------------------------ Instance variables ------------------------
 
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
-int _blocksize = 25;
+int _blocksize = 20;
 Character player = new Player(null);
 // 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
+int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
+PImage img; //startscreen
 
 //------------------------ Methods ------------------------
 
@@ -24,15 +26,22 @@ void miniGame()
 
 
 void setup() {
-  size(800, 950);
+  size(680, 720);
   background(0, 0, 0);
   setMap();
+  img=loadImage("tempstart.jpg");
 }
 
 void draw() {
-  drawMap();
-  frameRate(5);
-  player.move(player.direction);
+  if (screen==0){
+    image(img,0,0);
+  }
+  else if (screen==1){
+    background(0,0,0);
+    drawMap();
+    frameRate(5);
+    player.move(player.direction);
+  }
 }
 
 void setMap() {
@@ -45,6 +54,11 @@ void setMap() {
     }
   }
 }
+
+void mouseClicked(){
+  screen=1;
+}
+
 void drawMap() {
   for (int a = 0; a < map.length; a ++) {
     for (int b = 0; b < map[0].length; b++) {
@@ -53,13 +67,13 @@ void drawMap() {
         stroke(255, 255, 0);
         noStroke();
         fill(255, 255, 0);
-        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 12, 12);
+        ellipse(b*_blocksize+10, a*_blocksize+75+10, 12, 12);
       } 
       //normal dots
       else if (map[a][b].equals("d")) {
         noStroke();
         fill(255, 182, 193);
-        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, 4, 4);
+        ellipse(b*_blocksize+10, a*_blocksize+75+10, 4, 4);
       } 
       //broccoli tree
       else if (map[a][b].equals("t")) {
@@ -70,7 +84,7 @@ void drawMap() {
       //start point
       else if (map[a][b].equals("@")) {
         fill(255, 255, 255);
-        ellipse(b*_blocksize+12.5, a*_blocksize+75+12.5, _blocksize, _blocksize);
+        ellipse(b*_blocksize+10, a*_blocksize+75+10, _blocksize, _blocksize);
       }
       //eaten dot space or place you have been
       else if (map[a][b].equals("x")) {
