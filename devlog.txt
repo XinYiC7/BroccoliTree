@@ -68,3 +68,8 @@ Melanie Chow :: Added Start Screen and edited setting size
 Xin Yi Chen :: Wrote the method to make PacMan move appropriately. Did the plan for tomorrow.
 Melanie Chow:: Paired programming. 
 --------------------------------------------------------------
+2017-06-03
+--------------------------------------------------------------
+Melanie Chow:: Created a better looking start screen, changed map design, adjusted moving mechanism. Faced issues with moving. Opened issue on repo.
+--------------------------------------------------------------
+
