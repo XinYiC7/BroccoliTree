@@ -6,13 +6,12 @@
 
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
 int _blocksize = 20;
-Character player = new Player(null);
+Player player = new Player(null);
 // 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 PImage img; //startscreen
-
-//------------------------ Methods ------------------------
+//---------- Methods ------------------------
 
 /*
 facilitates progress of tower minigame (helper method for draw)
@@ -22,9 +21,6 @@ void miniGame()
   // Implementation (after completion of MVP)
 }
 
-
-
-
 void setup() {
   size(680, 720);
   background(0, 0, 0);
@@ -33,14 +29,15 @@ void setup() {
 }
 
 void draw() {
-  if (screen==0){
-    image(img,0,0);
-  }
-  else if (screen==1){
-    background(0,0,0);
+  if (screen==0) {
+    image(img, 0, 0);
+  } 
+  else if (screen==1) {
+    background(0, 0, 0);
     drawMap();
-    frameRate(5);
+    frameRate(7);
     player.move(player.direction);
+    print(player.direction);
   }
 }
 
@@ -55,7 +52,7 @@ void setMap() {
   }
 }
 
-void mouseClicked(){
+void mouseClicked() {
   screen=1;
 }
 
@@ -76,7 +73,7 @@ void drawMap() {
         ellipse(b*_blocksize+10, a*_blocksize+75+10, 4, 4);
       } 
       //broccoli tree
-      else if (map[a][b].equals("t")) {
+      else if (map[a][b].equals("b")) {
         //stroke(255, 0, 0);
         fill(255, 0, 0);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
@@ -96,6 +93,30 @@ void drawMap() {
         noStroke();
         fill(225, 225, 225);
         rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
+      } 
+      else if (player.power==true) {
+        //stuy walls
+        if (map[a][b].equals("s")) {
+          fill(255, 80, 80);
+          rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        }
+        else if (map[a][b].equals("t")) {
+          fill(255, 176, 97);
+          rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        }
+        else if (map[a][b].equals("u")) {
+          fill(255, 255, 80);
+          rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        }
+        else if (map[a][b].equals("y")) {
+          fill(168, 255, 80);
+          rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        }
+        else {
+        //stroke(0, 0, 255);
+        fill(0, 0, 255);
+        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        }
       }
       //walls
       else {
@@ -110,32 +131,21 @@ void drawMap() {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
-      player.direction = 1;
-      /*
-      while(player.move(1) != false){
-       player.move(1);
-       }*/
-    } else if (keyCode == DOWN) {
-      player.direction = 2;
-      /*
-      while(player.move(2) != false){
-       player.move(2);
-       }*/
-    } else if (keyCode == RIGHT) {
-      player.direction = 3;
-      /*
-      while(player.move(3) != false){
-       //delay(1000);
-       player.move(3);
-       }*/
-    } else if (keyCode == LEFT) {
-      player.direction = 4;
-      /*
-      while(player.move(4) != false){
-       //delay(1000);
-       player.move(4);
-       }*/
-    } else {
+         player.direction=1;
+    }
+    else if (keyCode == DOWN) {
+        player.direction=2;
+
+    } 
+    else if (keyCode == RIGHT) {
+         player.direction=3;
+       
+    } 
+    else if (keyCode == LEFT) {
+         player.direction=4;
+       
+    } 
+    else {
     }
   }
 }
