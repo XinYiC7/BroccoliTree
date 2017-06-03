@@ -25,7 +25,7 @@ void setup() {
   size(680, 720);
   background(0, 0, 0);
   setMap();
-  img=loadImage("tempstart.jpg");
+  img=loadImage("startscreen.png");
 }
 
 void draw() {
