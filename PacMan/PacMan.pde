@@ -54,33 +54,29 @@ void setup() {
   background(0, 0, 0);
   setMap();
   setimages();
-  font=createFont("imagine_font.ttf",20);
+  font=createFont("imagine_font.ttf", 20);
   textFont(font);
-  textAlign(LEFT,LEFT);
+  textAlign(LEFT, LEFT);
 }
 
 void draw() {
   if (screen==0) {
     drawStartScreen();
-  } 
-  else if (screen==1) {
+  } else if (screen==1) {
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move(player.direction);
     print(player.direction);
-    fill(255,255,255);
-    text("NAME:  "+player.name,80,50);
-    fill (255,25,0);
-    text("# LIVES:  "+player.numLives,440,65);
-    fill(255,283,5);
-    text("SCORE:  "+player.score,450,40);
-    
-  } 
-  else if (screen==2) {
+    fill(255, 255, 255);
+    text("NAME:  "+player.name, 80, 50);
+    fill (255, 25, 0);
+    text("# LIVES:  "+player.numLives, 440, 65);
+    fill(255, 283, 5);
+    text("SCORE:  "+player.score, 450, 40);
+  } else if (screen==2) {
     drawh2p();
-  } 
-  else if (screen==3) {
+  } else if (screen==3) {
     drawhs();
   }
 
@@ -151,24 +147,22 @@ void drawh2p() { //draw how 2 play screen
   } else {
     image(homebutton1, 0, 0);
   }
-  fill(255,255,255);
-  text("The goal of the game is to get the highest",80,210); 
-  text("number of points. You don't need to eat all",80,240); 
-  text("the dots. Just don't get touched by a ghost!",80,270);
-  fill(255,25,0);
-  text("+Use the arrow keys to move",170,330); 
-  text("+Eat power pellets to destroy ghosts!",110,350);
-  text("+Bonus rounds once you reach 5000!",120,370);
-  text("+You have 3 Lives!",210,390);
-  
-  fill(255,238,0);
-  text("+Dots-10 points",230,450);
-  text("+Ghosts-50 points",200,470);
-  text("+Broccoli Tree-30 points!",160,490);
-  fill (0,25,255);
-  text("Get chompin', champ",220,550);
-  
+  fill(255, 255, 255);
+  text("The goal of the game is to get the highest", 80, 210); 
+  text("number of points. You don't need to eat all", 80, 240); 
+  text("the dots. Just don't get touched by a ghost!", 80, 270);
+  fill(255, 25, 0);
+  text("+Use the arrow keys to move", 170, 330); 
+  text("+Eat power pellets to destroy ghosts!", 110, 350);
+  text("+Bonus rounds once you reach 5000!", 120, 370);
+  text("+You have 3 Lives!", 210, 390);
 
+  fill(255, 238, 0);
+  text("+Dots-10 points", 230, 450);
+  text("+Ghosts-50 points", 200, 470);
+  text("+Broccoli Tree-30 points!", 160, 490);
+  fill (0, 25, 255);
+  text("Get chompin', champ", 220, 550);
 }
 
 void drawhs() { //draw high score screen
@@ -229,7 +223,7 @@ void setMap() {
 }
 
 void drawMap() {
-  text("Score:" + player.score, 120,0);
+  text("Score:" + player.score, 120, 0);
   if (overhome()) {
     image(homebutton2, 0, 0);
   } else {
