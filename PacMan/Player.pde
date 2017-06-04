@@ -6,10 +6,9 @@ class Player extends Character {
   int score;
   int numLives;
   boolean power;
-  int direction;
   Player( String name) {
-    super.name = name;
-    super.direction=direction;
+    super();
+    this.name = name;
     power=false;
   }
 

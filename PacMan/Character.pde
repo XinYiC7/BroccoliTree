@@ -21,13 +21,13 @@ class Character {
     speed = 1;
     xPos = 24;
     yPos = 28;
-    direction = 0;
+    this.direction = 0;
   }
 
   // Moves the Character according to its direction attribute
   boolean move() {
     int oldPos;
-    if (direction == 1) { // (up)
+    if (this.direction == 1) { // (up)
       if (!PacMan.map[yPos-1][xPos].equals("#") &
         !PacMan.map[yPos-1][xPos].equals("s") &
         !PacMan.map[yPos-1][xPos].equals("t") &
@@ -42,7 +42,7 @@ class Character {
         return true;
       } 
       return false;
-    } else if (direction == 2) { // (down)
+    } else if (this.direction == 2) { // (down)
       if (!PacMan.map[yPos+1][xPos].equals("#") &
         !PacMan.map[yPos+1][xPos].equals("s") &
         !PacMan.map[yPos+1][xPos].equals("t") &
@@ -58,7 +58,7 @@ class Character {
         return true;
       } 
       return false;
-    } else if (direction == 3) { // (right)
+    } else if (this.direction == 3) { // (right)
       if (!PacMan.map[yPos][xPos+1].equals("#") & 
         !PacMan.map[yPos][xPos+1].equals("s") &
         !PacMan.map[yPos][xPos+1].equals("t") & 
@@ -75,7 +75,7 @@ class Character {
         return true;
       } 
       return false;
-    } else if (direction == 4) { // (left)
+    } else if (this.direction == 4) { // (left)
       if (!PacMan.map[yPos][xPos-1].equals("#") & 
         !PacMan.map[yPos][xPos-1].equals("s") &
         !PacMan.map[yPos][xPos-1].equals("t") &
