@@ -28,11 +28,10 @@ class Character {
   boolean move(int x) {
     int oldPos;
     if (this.direction == 1) { // (up)
-      if (!PacMan.map[yPos-1][xPos].equals("#") &
-        !PacMan.map[yPos-1][xPos].equals("s") &
-        !PacMan.map[yPos-1][xPos].equals("t") &
-        !PacMan.map[yPos-1][xPos].equals("u") &
-        !PacMan.map[yPos-1][xPos].equals("y")) {
+      if (PacMan.map[yPos-1][xPos].equals("d")|
+          PacMan.map[yPos-1][xPos].equals("p") |
+          PacMan.map[yPos-1][xPos].equals("b")|
+          PacMan.map[yPos-1][xPos].equals("x")){
         oldPos = yPos;
         yPos -= speed;
         PacMan.map[yPos][xPos] = "@";
@@ -43,11 +42,10 @@ class Character {
       } 
       return false;
     } else if (this.direction == 2) { // (down)
-      if (!PacMan.map[yPos+1][xPos].equals("#") &
-        !PacMan.map[yPos+1][xPos].equals("s") &
-        !PacMan.map[yPos+1][xPos].equals("t") &
-        !PacMan.map[yPos+1][xPos].equals("u") &
-        !PacMan.map[yPos+1][xPos].equals("y")) { 
+      if (PacMan.map[yPos+1][xPos].equals("d")|
+          PacMan.map[yPos+1][xPos].equals("p") |
+          PacMan.map[yPos+1][xPos].equals("b")|
+          PacMan.map[yPos+1][xPos].equals("x")) { 
         oldPos = yPos;
         yPos += speed;
 
@@ -59,11 +57,10 @@ class Character {
       } 
       return false;
     } else if (this.direction == 3) { // (right)
-      if (!PacMan.map[yPos][xPos+1].equals("#") & 
-        !PacMan.map[yPos][xPos+1].equals("s") &
-        !PacMan.map[yPos][xPos+1].equals("t") & 
-        !PacMan.map[yPos][xPos+1].equals("u") & 
-        !PacMan.map[yPos][xPos+1].equals("y")) { 
+      if (PacMan.map[yPos][xPos+1].equals("d")|
+          PacMan.map[yPos][xPos+1].equals("p") |
+          PacMan.map[yPos][xPos+1].equals("b")|
+          PacMan.map[yPos][xPos+1].equals("x")) { 
         oldPos = xPos;
         xPos += speed;
 
@@ -76,11 +73,10 @@ class Character {
       } 
       return false;
     } else if (this.direction == 4) { // (left)
-      if (!PacMan.map[yPos][xPos-1].equals("#") & 
-        !PacMan.map[yPos][xPos-1].equals("s") &
-        !PacMan.map[yPos][xPos-1].equals("t") &
-        !PacMan.map[yPos][xPos-1].equals("u") &
-        !PacMan.map[yPos][xPos-1].equals("y")) { 
+      if (PacMan.map[yPos][xPos-1].equals("d")|
+          PacMan.map[yPos][xPos-1].equals("p") |
+          PacMan.map[yPos][xPos-1].equals("b")|
+          PacMan.map[yPos][xPos-1].equals("x")) { 
         oldPos = xPos;
         xPos -= speed;
 
