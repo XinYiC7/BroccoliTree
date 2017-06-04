@@ -81,5 +81,6 @@ Gian Tricarico :: Modify and debug move() for Character
 --------------------------------------------------------------
 2017-06-04
 -------------------------------------------------
-Melanie Chow ::Completed instruction screen, added points to the dots and show score in game + # lives
+Melanie Chow :: Completed instruction screen, added points to the dots and show score in game + # lives
+Xin Yi Chen :: Made eaten dots reappear after few seconds. Added ALQueue.
 
