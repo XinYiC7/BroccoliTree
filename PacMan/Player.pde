@@ -39,14 +39,14 @@ class Player extends Character {
           PacMan.map[i][xPos] = "x";
         }
         if (PacMan.map[yPos-1][xPos].equals("d")){
-          this.score+=100;
+          this.score+=10;
         }
         if (PacMan.map[yPos-1][xPos].equals("p")){
-          this.score+=100;
+          this.score+=50;
           power=true;
         }
         if (PacMan.map[yPos-1][xPos].equals("b")){
-          this.score+=300;
+          this.score+=30;
         }
         
         return true;
@@ -65,14 +65,14 @@ class Player extends Character {
         }
         PacMan.map[yPos][xPos]= "@";
         if (PacMan.map[yPos+1][xPos].equals("d")){
-          this.score+=100;
+          this.score+=10;
         }
         if (PacMan.map[yPos+1][xPos].equals("p")){
-          this.score+=100;
+          this.score+=50;
           power=true;
         }
         if (PacMan.map[yPos+1][xPos].equals("b")){
-          this.score+=300;
+          this.score+=30;
         }        
         return true;
       } 
@@ -91,14 +91,14 @@ class Player extends Character {
 
         PacMan.map[yPos][xPos] = "@";
         if (PacMan.map[yPos][xPos+1].equals("d")){
-          this.score+=100;
+          this.score+=10;
         }
         if (PacMan.map[yPos][xPos+1].equals("p")){
-          this.score+=100;
+          this.score+=50;
           power=true;
         }
         if (PacMan.map[yPos][xPos+1].equals("b")){
-          this.score+=300;
+          this.score+=30;
         }        
         return true;
       } 
@@ -117,14 +117,14 @@ class Player extends Character {
 
         PacMan.map[yPos][xPos] = "@";
         if (PacMan.map[yPos][xPos-1].equals("d")){
-          this.score+=100;
+          this.score+=10;
         }
         if (PacMan.map[yPos][xPos-1].equals("p")){
-          this.score+=100;
+          this.score+=50;
           power=true;
         }
         if (PacMan.map[yPos][xPos-1].equals("b")){
-          this.score+=300;
+          this.score+=30;
         } 
         return true;
       }

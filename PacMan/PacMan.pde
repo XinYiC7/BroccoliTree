@@ -158,13 +158,13 @@ void drawh2p() { //draw how 2 play screen
   fill(255,25,0);
   text("+Use the arrow keys to move",170,330); 
   text("+Eat power pellets to destroy ghosts!",110,350);
-  text("+There's a time limit!",210,370);
+  text("+Bonus rounds once you reach 5000!",120,370);
   text("+You have 3 Lives!",210,390);
   
   fill(255,238,0);
-  text("+Dots-100 points",230,450);
-  text("+Ghosts-200 points",200,470);
-  text("+Broccoli Tree-300 points!",160,490);
+  text("+Dots-10 points",230,450);
+  text("+Ghosts-50 points",200,470);
+  text("+Broccoli Tree-30 points!",160,490);
   fill (0,25,255);
   text("Get chompin', champ",220,550);
   
