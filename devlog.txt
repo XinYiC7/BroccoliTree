@@ -68,13 +68,16 @@ Melanie Chow :: Added Start Screen and edited setting size
 2017-06-01
 --------------------------------------------------------------
 Xin Yi Chen :: Wrote the method to make PacMan move appropriately. Did the plan for tomorrow.
-Melanie Chow:: Paired programming. 
+Melanie Chow:: Paired programming.
+Gian Tricarico :: Implement mechanism for drawing jail for ghosts.
+                  Add helpful comments
 --------------------------------------------------------------
 2017-06-03
 --------------------------------------------------------------
 Melanie Chow :: Created a better looking start screen: designed broccoli tree logo, designed buttons 
 and background screens, made pacman and ghost images, changed map design/coloring, adjusted moving 
-mechanism. Faced issues with moving. Opened issue on repo. 
+mechanism. Faced issues with moving. Opened issue on repo.
+Gian Tricarico :: Modify and debug move() for Character
 --------------------------------------------------------------
 2017-06-04
 -------------------------------------------------
