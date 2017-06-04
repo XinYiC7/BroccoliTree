@@ -100,6 +100,10 @@ void setimages() {
   pacman2=loadImage("pacman2.png");
   pacman3=loadImage("pacman3.png");
   pacman4=loadImage("pacman4.png");
+  redghost = loadImage("redghost.png");
+  pinkghost = loadImage("pinkghost.png");
+  orangeghost = loadImage("orangeghost.png");
+  blueghost = loadImage("blueghost.png");
 }
 
 void mouseClicked() {
@@ -294,6 +298,7 @@ void drawMap() {
           rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
         }
       }
+      
       //walls
       else {
         //stroke(0, 0, 255);
