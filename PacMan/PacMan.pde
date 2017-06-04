@@ -12,7 +12,7 @@ static String[][] map = new String[32][32];
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
 
-int counter = 0;
+// int counter = 0;
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 
@@ -65,7 +65,7 @@ void setup() {
 }
 
 void draw() {
-  counter ++;
+  // counter ++;
   if (screen==0) {
     drawStartScreen();
   } else if (screen==1) {
@@ -86,7 +86,7 @@ void draw() {
     drawhs();
   }
 
-  if ((counter % 5 == 0) && (!eaten.isEmpty())) {
+  if ((frameCount % 5 == 0) && (!eaten.isEmpty())) {
     reappear(eaten.dequeue());
   }
 
