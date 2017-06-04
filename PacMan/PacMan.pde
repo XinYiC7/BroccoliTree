@@ -56,7 +56,7 @@ void draw() {
     background(0, 0, 0);
     drawMap();
     frameRate(7);
-    player.move(player.direction);
+    player.move();
     print(player.direction);
   }
   //print("ycordinate: "+mouseY);

@@ -24,14 +24,15 @@ class Character {
     direction = 0;
   }
 
-  boolean move(int x) {
+  // Moves the Character according to its direction attribute
+  boolean move() {
     int oldPos;
-    if (x == 1) {
+    if (direction == 1) { // (up)
       if (!PacMan.map[yPos-1][xPos].equals("#") &
-          !PacMan.map[yPos-1][xPos].equals("s") &
-          !PacMan.map[yPos-1][xPos].equals("t") &
-          !PacMan.map[yPos-1][xPos].equals("u") &
-          !PacMan.map[yPos-1][xPos].equals("y")) {
+        !PacMan.map[yPos-1][xPos].equals("s") &
+        !PacMan.map[yPos-1][xPos].equals("t") &
+        !PacMan.map[yPos-1][xPos].equals("u") &
+        !PacMan.map[yPos-1][xPos].equals("y")) {
         oldPos = yPos;
         yPos -= speed;
         PacMan.map[yPos][xPos] = "@";
@@ -41,13 +42,12 @@ class Character {
         return true;
       } 
       return false;
-    } 
-    else if (x == 2) {
+    } else if (direction == 2) { // (down)
       if (!PacMan.map[yPos+1][xPos].equals("#") &
-          !PacMan.map[yPos+1][xPos].equals("s") &
-          !PacMan.map[yPos+1][xPos].equals("t") &
-          !PacMan.map[yPos+1][xPos].equals("u") &
-          !PacMan.map[yPos+1][xPos].equals("y")) { 
+        !PacMan.map[yPos+1][xPos].equals("s") &
+        !PacMan.map[yPos+1][xPos].equals("t") &
+        !PacMan.map[yPos+1][xPos].equals("u") &
+        !PacMan.map[yPos+1][xPos].equals("y")) { 
         oldPos = yPos;
         yPos += speed;
 
@@ -58,13 +58,12 @@ class Character {
         return true;
       } 
       return false;
-    } 
-    else if (x == 3) {
+    } else if (direction == 3) { // (right)
       if (!PacMan.map[yPos][xPos+1].equals("#") & 
-          !PacMan.map[yPos][xPos+1].equals("s") &
-          !PacMan.map[yPos][xPos+1].equals("t") & 
-          !PacMan.map[yPos][xPos+1].equals("u") & 
-          !PacMan.map[yPos][xPos+1].equals("y")){ 
+        !PacMan.map[yPos][xPos+1].equals("s") &
+        !PacMan.map[yPos][xPos+1].equals("t") & 
+        !PacMan.map[yPos][xPos+1].equals("u") & 
+        !PacMan.map[yPos][xPos+1].equals("y")) { 
         oldPos = xPos;
         xPos += speed;
 
@@ -76,13 +75,12 @@ class Character {
         return true;
       } 
       return false;
-    }
-    else if (x == 4) {
+    } else if (direction == 4) { // (left)
       if (!PacMan.map[yPos][xPos-1].equals("#") & 
-          !PacMan.map[yPos][xPos-1].equals("s") &
-          !PacMan.map[yPos][xPos-1].equals("t") &
-          !PacMan.map[yPos][xPos-1].equals("u") &
-          !PacMan.map[yPos][xPos-1].equals("y")){ 
+        !PacMan.map[yPos][xPos-1].equals("s") &
+        !PacMan.map[yPos][xPos-1].equals("t") &
+        !PacMan.map[yPos][xPos-1].equals("u") &
+        !PacMan.map[yPos][xPos-1].equals("y")) { 
         oldPos = xPos;
         xPos -= speed;
 
@@ -94,10 +92,8 @@ class Character {
         return true;
       }
       return false;
-    } 
-    else {      
+    } else {      
       return false;
     }
   }
-  
 }
