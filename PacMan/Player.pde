@@ -3,11 +3,13 @@
 // APCS2 pd4
 
 class Player extends Character {
+  String name;
   int score;
   int numLives;
 
   Player(String newName) {
-    super(newName);
+    super();
+    this.name = newName;
     this.xPos = 24;
     this.yPos = 28;
     this.state = 1; // Player starts out alive

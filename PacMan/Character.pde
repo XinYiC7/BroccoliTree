@@ -7,7 +7,7 @@ abstract class Character {
 
 
   //------------------------ instance vars ------------------------
-  String name; // for Player, name entered by user; for Ghost, preset names
+  // String name; // for Player, name entered by user; for Ghost, preset names
   int speed; // In full version, ghost speed increases at higher difficulties (not in MVP)
   int xPos;
   int yPos;
@@ -19,8 +19,7 @@ abstract class Character {
 
   //------------------------ Methods ------------------------
 
-  Character(String newName) {
-    this.name = newName;
+  Character() {
     this.speed = 1;
     this.direction = 0; // Character is stationary at beginning
   }

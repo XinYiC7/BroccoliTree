@@ -6,8 +6,8 @@
 class Ghost extends Character {
 
   // constructor
-  Ghost(String newName, int x, int y) {
-    super(newName);
+  Ghost(int x, int y) {
+    super();
     this.xPos = x;
     this.yPos = y;
     this.state = 0; // ghosts start in jail

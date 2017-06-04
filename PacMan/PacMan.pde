@@ -7,6 +7,10 @@
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
 int _blocksize = 20;
 Player player = new Player(null);
+Ghost Blinky; // red Ghost
+Ghost Pinky; // pink Ghost
+Ghost Inky; // blue (cyan) Ghost
+Ghost Clyde; // orange Ghost
 // 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
 //eaten dots
@@ -57,6 +61,10 @@ void miniGame()
 void setup() {
   size(680, 720);
   background(0, 0, 0);
+  Blinky = new Ghost(14, 17);
+  Pinky = new Ghost(15, 18);
+  Inky = new Ghost(16, 17);
+  Clyde = new Ghost(17, 18);
   setMap();
   setimages();
   font=createFont("imagine_font.ttf", 20);
@@ -283,13 +291,56 @@ void drawMap() {
         fill(0, 0, 0);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       }
+
       // Jail for ghosts:
       else if (map[a][b].equals("j")) {
         noStroke();
         fill(225, 225, 225);
         rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
-      } else if (player.state==2) {
-        //stuy walls
+      }
+
+      // Red Ghost:
+      else if ( map[a][b].equals("0") ) {
+        if (Blinky.state == 0) {
+          // If this ghost is in the jail, the block behind it needs to be white.
+          fill(225, 225, 225);
+          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
+        }
+        image(redghost, b * _blocksize, a * _blocksize + 75);
+      }
+
+      // Pink Ghost:
+      else if ( map[a][b].equals("1") ) {
+        if (Pinky.state == 0) {
+          // If this ghost is in the jail, the block behind it needs to be white.
+          fill(225, 225, 225);
+          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
+        }
+        image(pinkghost, b * _blocksize, a * _blocksize + 75);
+      }
+
+      // Blue (Cyan) Ghost:
+      else if ( map[a][b].equals("2") ) {
+        if (Inky.state == 0) {
+          // If this ghost is in the jail, the block behind it needs to be white.
+          fill(225, 225, 225);
+          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
+        }
+        image(blueghost, b * _blocksize, a * _blocksize + 75);
+      }
+
+      // Orange Ghost:
+      else if ( map[a][b].equals("3") ) {
+        if (Clyde.state == 0) {
+          // If this ghost is in the jail, the block behind it needs to be white.
+          fill(225, 225, 225);
+          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
+        }
+        image(orangeghost, b * _blocksize, a * _blocksize + 75);
+      }
+
+      // Stuy walls
+      else if (player.state==2) {
         if (map[a][b].equals("s")) {
           fill(255, 80, 80);
           rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
@@ -314,10 +365,10 @@ void drawMap() {
         //stroke(0, 0, 255);
         fill(0, 0, 255);
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
-      }
-    }
-  }
-}
+      } // end else statement
+    } // end inner for loop
+  } // end outer for loop
+} // end void drawMap()
 
 //dots reappearing after 5 sec
 void reappear(Dot x) {
