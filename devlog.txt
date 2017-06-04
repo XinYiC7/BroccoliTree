@@ -70,6 +70,6 @@ Melanie Chow:: Paired programming.
 --------------------------------------------------------------
 2017-06-03
 --------------------------------------------------------------
-Melanie Chow:: Created a better looking start screen, changed map design, adjusted moving mechanism. Faced issues with moving. Opened issue on repo.
+Melanie Chow:: Created a better looking start screen: designed broccoli tree logo, designed buttons and background screens, made pacman and ghost images, changed map design/coloring, adjusted moving mechanism. Faced issues with moving. Opened issue on repo. Made instruction and high score screen.
 --------------------------------------------------------------
 
