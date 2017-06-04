@@ -288,7 +288,7 @@ void drawMap() {
         noStroke();
         fill(225, 225, 225);
         rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
-      } else if (player.power==true) {
+      } else if (player.state==2) {
         //stuy walls
         if (map[a][b].equals("s")) {
           fill(255, 80, 80);

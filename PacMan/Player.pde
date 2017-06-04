@@ -5,14 +5,14 @@
 class Player extends Character {
   int score;
   int numLives;
-  boolean power;
 
-  Player( String name) {
-    super();
-    this.name = name;
-    power=false;
-    score=0;
-    numLives=3;
+  Player(String newName) {
+    super(newName);
+    this.xPos = 24;
+    this.yPos = 28;
+    this.state = 1; // Player starts out alive
+    this.score=0;
+    this.numLives=3;
   }
 
   void encounter(Ghost a) {
@@ -45,123 +45,122 @@ class Player extends Character {
         }
         if (PacMan.map[yPos-1][xPos].equals("d")) {
           eatenDot = new Dot(1, xPos, yPos-1);
-        eaten.enqueue(eatenDot);
-        this.score+=10;
-      }
-      if (PacMan.map[yPos-1][xPos].equals("p")) {
-        eatenDot = new Dot(2, xPos, yPos-1);
-        eaten.enqueue(eatenDot);
-        this.score+=50;
-        power=true;
-      }
-      if (PacMan.map[yPos-1][xPos].equals("b")) {
-        eatenDot = new Dot(3, xPos, yPos-1);
-        eaten.enqueue(eatenDot);
-        this.score+=30;
+          eaten.enqueue(eatenDot);
+          this.score+=10;
+        }
+        if (PacMan.map[yPos-1][xPos].equals("p")) {
+          eatenDot = new Dot(2, xPos, yPos-1);
+          eaten.enqueue(eatenDot);
+          this.score+=50;
+          this.state = 2;
+        }
+        if (PacMan.map[yPos-1][xPos].equals("b")) {
+          eatenDot = new Dot(3, xPos, yPos-1);
+          eaten.enqueue(eatenDot);
+          this.score+=30;
+        }
+
+        return true;
       }
 
-      return true;
+      return false;
+    } else if (this.direction == 2) { // (down)
+      if (PacMan.map[yPos+1][xPos].equals("d")|
+        PacMan.map[yPos+1][xPos].equals("p") |
+        PacMan.map[yPos+1][xPos].equals("b")|
+        PacMan.map[yPos+1][xPos].equals("x")) { 
+        oldPos = yPos;
+        yPos += speed;
+
+        for (int i = oldPos; i < yPos; i++) {
+          PacMan.map[i][xPos]= "x";
+        }
+        PacMan.map[yPos][xPos]= "@";
+        if (PacMan.map[yPos+1][xPos].equals("d")) {
+          eatenDot = new Dot(1, xPos, yPos+1);
+          eaten.enqueue(eatenDot);
+          this.score+=10;
+        }
+        if (PacMan.map[yPos+1][xPos].equals("p")) {
+          eatenDot = new Dot(2, xPos, yPos+1);
+          eaten.enqueue(eatenDot);
+          this.score+=50;
+          this.state = 2;
+        }
+        if (PacMan.map[yPos+1][xPos].equals("b")) {
+          eatenDot = new Dot(3, xPos, yPos+1);
+          eaten.enqueue(eatenDot);
+          this.score+=30;
+        }        
+        return true;
+      } 
+      return false;
+    } else if (this.direction == 3) { // (right)
+      if (PacMan.map[yPos][xPos+1].equals("d")|
+        PacMan.map[yPos][xPos+1].equals("p") |
+        PacMan.map[yPos][xPos+1].equals("b")|
+        PacMan.map[yPos][xPos+1].equals("x")) { 
+        oldPos = xPos;
+        xPos += speed;
+
+        for (int i = oldPos; i < xPos; i ++) {
+          PacMan.map[yPos][i] = "x";
+        }
+
+        PacMan.map[yPos][xPos] = "@";
+        if (PacMan.map[yPos][xPos+1].equals("d")) {
+          eatenDot = new Dot(1, xPos+1, yPos);
+          eaten.enqueue(eatenDot);
+          this.score+=10;
+        }
+        if (PacMan.map[yPos][xPos+1].equals("p")) {
+          eatenDot = new Dot(2, xPos+1, yPos);
+          eaten.enqueue(eatenDot);
+          this.score+=50;
+          this.state = 2;
+        }
+        if (PacMan.map[yPos][xPos+1].equals("b")) {
+          eatenDot = new Dot(3, xPos+1, yPos);
+          eaten.enqueue(eatenDot);
+          this.score+=30;
+        }        
+        return true;
+      } 
+      return false;
+    } else if (this.direction == 4) { // (left)
+      if (PacMan.map[yPos][xPos-1].equals("d")|
+        PacMan.map[yPos][xPos-1].equals("p") |
+        PacMan.map[yPos][xPos-1].equals("b")|
+        PacMan.map[yPos][xPos-1].equals("x")) { 
+        oldPos = xPos;
+        xPos -= speed;
+
+        for (int i = oldPos; i > xPos; i --) {
+          PacMan.map[yPos][i]= "x";
+        }
+
+        PacMan.map[yPos][xPos] = "@";
+        if (PacMan.map[yPos][xPos-1].equals("d")) {
+          eatenDot = new Dot(1, xPos-1, yPos);
+          eaten.enqueue(eatenDot);
+          this.score+=10;
+        }
+        if (PacMan.map[yPos][xPos-1].equals("p")) {
+          eatenDot = new Dot(2, xPos-1, yPos);
+          eaten.enqueue(eatenDot);
+          this.score+=50;
+          this.state = 2;
+        }
+        if (PacMan.map[yPos][xPos-1].equals("b")) {
+          eatenDot = new Dot(3, xPos-1, yPos);
+          eaten.enqueue(eatenDot);
+          this.score+=30;
+        } 
+        return true;
+      }
+      return false;
+    } else {      
+      return false;
     }
-  
-    return false;
   }
-   else if (this.direction == 2) { // (down)
-  if (PacMan.map[yPos+1][xPos].equals("d")|
-    PacMan.map[yPos+1][xPos].equals("p") |
-    PacMan.map[yPos+1][xPos].equals("b")|
-    PacMan.map[yPos+1][xPos].equals("x")) { 
-    oldPos = yPos;
-    yPos += speed;
-
-    for (int i = oldPos; i < yPos; i++) {
-      PacMan.map[i][xPos]= "x";
-    }
-    PacMan.map[yPos][xPos]= "@";
-    if (PacMan.map[yPos+1][xPos].equals("d")) {
-      eatenDot = new Dot(1, xPos, yPos+1);
-      eaten.enqueue(eatenDot);
-      this.score+=10;
-    }
-    if (PacMan.map[yPos+1][xPos].equals("p")) {
-      eatenDot = new Dot(2, xPos, yPos+1);
-      eaten.enqueue(eatenDot);
-      this.score+=50;
-      power=true;
-    }
-    if (PacMan.map[yPos+1][xPos].equals("b")) {
-      eatenDot = new Dot(3, xPos, yPos+1);
-      eaten.enqueue(eatenDot);
-      this.score+=30;
-    }        
-    return true;
-  } 
-  return false;
-} else if (this.direction == 3) { // (right)
-  if (PacMan.map[yPos][xPos+1].equals("d")|
-    PacMan.map[yPos][xPos+1].equals("p") |
-    PacMan.map[yPos][xPos+1].equals("b")|
-    PacMan.map[yPos][xPos+1].equals("x")) { 
-    oldPos = xPos;
-    xPos += speed;
-
-    for (int i = oldPos; i < xPos; i ++) {
-      PacMan.map[yPos][i] = "x";
-    }
-
-    PacMan.map[yPos][xPos] = "@";
-    if (PacMan.map[yPos][xPos+1].equals("d")) {
-      eatenDot = new Dot(1, xPos+1, yPos);
-      eaten.enqueue(eatenDot);
-      this.score+=10;
-    }
-    if (PacMan.map[yPos][xPos+1].equals("p")) {
-      eatenDot = new Dot(2, xPos+1, yPos);
-      eaten.enqueue(eatenDot);
-      this.score+=50;
-      power=true;
-    }
-    if (PacMan.map[yPos][xPos+1].equals("b")) {
-      eatenDot = new Dot(3, xPos+1, yPos);
-      eaten.enqueue(eatenDot);
-      this.score+=30;
-    }        
-    return true;
-  } 
-  return false;
-} else if (this.direction == 4) { // (left)
-  if (PacMan.map[yPos][xPos-1].equals("d")|
-    PacMan.map[yPos][xPos-1].equals("p") |
-    PacMan.map[yPos][xPos-1].equals("b")|
-    PacMan.map[yPos][xPos-1].equals("x")) { 
-    oldPos = xPos;
-    xPos -= speed;
-
-    for (int i = oldPos; i > xPos; i --) {
-      PacMan.map[yPos][i]= "x";
-    }
-
-    PacMan.map[yPos][xPos] = "@";
-    if (PacMan.map[yPos][xPos-1].equals("d")) {
-      eatenDot = new Dot(1, xPos-1, yPos);
-      eaten.enqueue(eatenDot);
-      this.score+=10;
-    }
-    if (PacMan.map[yPos][xPos-1].equals("p")) {
-      eatenDot = new Dot(2, xPos-1, yPos);
-      eaten.enqueue(eatenDot);
-      this.score+=50;
-      power=true;
-    }
-    if (PacMan.map[yPos][xPos-1].equals("b")) {
-      eatenDot = new Dot(3, xPos-1, yPos);
-      eaten.enqueue(eatenDot);
-      this.score+=30;
-    } 
-    return true;
-  }
-  return false;
-} else {      
-  return false;
-}
-}
 }
