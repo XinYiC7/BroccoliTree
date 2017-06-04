@@ -9,6 +9,11 @@ int _blocksize = 20;
 Player player = new Player(null);
 // 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
+//eaten dots
+ALQueue<Dot> eaten = new ALQueue<Dot>();
+
+int counter = 0;
+
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 
 //-----START SCREEN IMAGES & VARIABLES------
@@ -60,6 +65,7 @@ void setup() {
 }
 
 void draw() {
+  counter ++;
   if (screen==0) {
     drawStartScreen();
   } else if (screen==1) {
@@ -67,7 +73,7 @@ void draw() {
     drawMap();
     frameRate(6);
     player.move();
-    print(player.direction);
+    //print(player.direction);
     fill(255, 255, 255);
     text("NAME:  "+player.name, 80, 50);
     fill (255, 25, 0);
@@ -78,6 +84,10 @@ void draw() {
     drawh2p();
   } else if (screen==3) {
     drawhs();
+  }
+
+  if ((counter % 5 == 0) && (!eaten.isEmpty())) {
+    reappear(eaten.dequeue());
   }
 
   //print("xcordinate: "+mouseX);
@@ -298,7 +308,7 @@ void drawMap() {
           rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
         }
       }
-      
+
       //walls
       else {
         //stroke(0, 0, 255);
@@ -306,6 +316,17 @@ void drawMap() {
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       }
     }
+  }
+}
+
+//dots reappearing after 5 sec
+void reappear(Dot x) {
+  if (x.whatAmI == 1) {
+    map[x.yPos][x.xPos] = "d";
+  } else if (x.whatAmI == 2) {
+    map[x.yPos][x.xPos] = "p";
+  } else {
+    map[x.yPos][x.xPos] = "b";
   }
 }
 

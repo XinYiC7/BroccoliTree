@@ -3,15 +3,18 @@
 // APCS2 pd4
 
 // The dots that Pacman eats
-class Dot{
- int point;
- color c;
+static class Dot{
+ //int point;
+ //color c;
  int xPos;
  int yPos;
- boolean isEaten;
- int whatAmI;
+ //boolean isEaten;
+ int whatAmI; //1:normal dot, 2:PowerPellet, 3:BroccoliTree
  
- Dot(int cololor, int whatAmI, int x, int y){
+ Dot(int Iam, int x, int y){
+   whatAmI = Iam;
+   xPos = x;
+   yPos = y;
  }
 
 }
