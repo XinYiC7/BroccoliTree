@@ -78,5 +78,5 @@ mechanism. Faced issues with moving. Opened issue on repo.
 --------------------------------------------------------------
 2017-06-04
 -------------------------------------------------
-Melanie Chow ::Completed instruction and high score screen.
+Melanie Chow ::Completed instruction screen, added points to the dots and show score in game + # lives
 
