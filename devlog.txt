@@ -7,19 +7,21 @@ pd 4
 PACMAN
 
 OBSTACLES OVERCOME:
-
+How to insert a new name and start a new game once user goes back to home.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNRESOLVED ISSUES:
-
+Pacman stops moving in current direction when the new direction inputted is invalid.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
-
+How to make hover buttons! 
+How to add text!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MID-DEVELOPMENT DESIGN CHANGES: 
-
+-Make the background using a txt file instead of loading images and pixels
+-Making pacman move through the 2d array, rather than being on top and checking the pixel background.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 LESSONS LEARNED:
