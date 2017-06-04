@@ -27,11 +27,7 @@ class Character {
   // Moves the Character according to its direction attribute
   boolean move(int x) {
     int oldPos;
-<<<<<<< HEAD
     if (this.direction == 1) { // (up)
-=======
-    if (x == 1) { // (up)
->>>>>>> 776df461045b3455b9e56a856288712912a906a3
       if (!PacMan.map[yPos-1][xPos].equals("#") &
         !PacMan.map[yPos-1][xPos].equals("s") &
         !PacMan.map[yPos-1][xPos].equals("t") &
@@ -46,11 +42,7 @@ class Character {
         return true;
       } 
       return false;
-<<<<<<< HEAD
     } else if (this.direction == 2) { // (down)
-=======
-    } else if (x == 2) { // (down)
->>>>>>> 776df461045b3455b9e56a856288712912a906a3
       if (!PacMan.map[yPos+1][xPos].equals("#") &
         !PacMan.map[yPos+1][xPos].equals("s") &
         !PacMan.map[yPos+1][xPos].equals("t") &
@@ -66,11 +58,7 @@ class Character {
         return true;
       } 
       return false;
-<<<<<<< HEAD
     } else if (this.direction == 3) { // (right)
-=======
-    } else if (x == 3) { // (right)
->>>>>>> 776df461045b3455b9e56a856288712912a906a3
       if (!PacMan.map[yPos][xPos+1].equals("#") & 
         !PacMan.map[yPos][xPos+1].equals("s") &
         !PacMan.map[yPos][xPos+1].equals("t") & 
@@ -87,11 +75,7 @@ class Character {
         return true;
       } 
       return false;
-<<<<<<< HEAD
     } else if (this.direction == 4) { // (left)
-=======
-    } else if (x == 4) { // (left)
->>>>>>> 776df461045b3455b9e56a856288712912a906a3
       if (!PacMan.map[yPos][xPos-1].equals("#") & 
         !PacMan.map[yPos][xPos-1].equals("s") &
         !PacMan.map[yPos][xPos-1].equals("t") &
