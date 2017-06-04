@@ -1,3 +1,7 @@
+// Team BroccoliTree
+// Roster: Gian "Giant" Tricarico, Xin Yi Chen, Melanie "MChow" Chow
+// APCS2 pd4
+
 class Player extends Character {
   int score;
   int numLives;
