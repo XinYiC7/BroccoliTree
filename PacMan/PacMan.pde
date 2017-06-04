@@ -66,7 +66,7 @@ void draw() {
     background(0, 0, 0);
     drawMap();
     frameRate(6);
-    player.move(player.direction);
+    player.move();
     print(player.direction);
     fill(255, 255, 255);
     text("NAME:  "+player.name, 80, 50);
