@@ -76,11 +76,17 @@ void draw() {
   // counter ++;
   if (screen==0) {
     drawStartScreen();
-  } else if (screen==1) {
+  } 
+  else if (screen==1) {
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move();
+    Blinky.move((int) random(5),"0");
+    Pinky.move((int)random(5), "1");
+    print (Pinky.xPos+ " ");
+    Inky.move((int)random(5), "2");
+    Clyde.move((int)random(5), "3"); 
     //print(player.direction);
     fill(255, 255, 255);
     text("NAME:  "+player.name, 80, 50);
@@ -88,9 +94,11 @@ void draw() {
     text("# LIVES:  "+player.numLives, 440, 65);
     fill(255, 283, 5);
     text("SCORE:  "+player.score, 450, 40);
-  } else if (screen==2) {
+  } 
+  else if (screen==2) {
     drawh2p();
-  } else if (screen==3) {
+  } 
+  else if (screen==3) {
     drawhs();
   }
 
@@ -98,7 +106,8 @@ void draw() {
     reappear(eaten.dequeue());
   }
 
-  //print("xcordinate: "+mouseX);
+  //print("xcoordinate: "+mouseX);
+  //print("ycoordinate:-->"+mouseY);
 }
 
 void setimages() {
@@ -292,19 +301,9 @@ void drawMap() {
         rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
       }
 
-      // Jail for ghosts:
-      else if (map[a][b].equals("j")) {
-        noStroke();
-        fill(225, 225, 225);
-        rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
-      }
-
       // Red Ghost:
       else if ( map[a][b].equals("0") ) {
         if (Blinky.state == 0) {
-          // If this ghost is in the jail, the block behind it needs to be white.
-          fill(225, 225, 225);
-          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
         }
         image(redghost, b * _blocksize, a * _blocksize + 75);
       }
@@ -312,9 +311,6 @@ void drawMap() {
       // Pink Ghost:
       else if ( map[a][b].equals("1") ) {
         if (Pinky.state == 0) {
-          // If this ghost is in the jail, the block behind it needs to be white.
-          fill(225, 225, 225);
-          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
         }
         image(pinkghost, b * _blocksize, a * _blocksize + 75);
       }
@@ -322,9 +318,6 @@ void drawMap() {
       // Blue (Cyan) Ghost:
       else if ( map[a][b].equals("2") ) {
         if (Inky.state == 0) {
-          // If this ghost is in the jail, the block behind it needs to be white.
-          fill(225, 225, 225);
-          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
         }
         image(blueghost, b * _blocksize, a * _blocksize + 75);
       }
@@ -332,9 +325,6 @@ void drawMap() {
       // Orange Ghost:
       else if ( map[a][b].equals("3") ) {
         if (Clyde.state == 0) {
-          // If this ghost is in the jail, the block behind it needs to be white.
-          fill(225, 225, 225);
-          rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
         }
         image(orangeghost, b * _blocksize, a * _blocksize + 75);
       }

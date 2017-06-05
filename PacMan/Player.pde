@@ -6,6 +6,7 @@ class Player extends Character {
   String name;
   int score;
   int numLives;
+  int direction; // 1-up 2-down 3-right 4=left
 
   Player(String newName) {
     super();
@@ -15,6 +16,7 @@ class Player extends Character {
     this.state = 1; // Player starts out alive
     this.score=0;
     this.numLives=3;
+    this.direction=0;
   }
 
   void encounter(Ghost a) {

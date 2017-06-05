@@ -13,9 +13,9 @@
 #d###dsssssssd####dtttd#######d#
 #d###dddddddddddddddddddddddddd#
 #dd##d#####dddddddddddddddddd#d#
-#dd##d#####dd###j###dd#d###dd#d#
-#dd##d#####dd#0j2jj#dd#d#p#dd#d#
-#dd##d#####dd#j1j3j#dd#d#d##d#d#
+#dd##d#####dd###x###dd#d###dd#d#
+#dd##d#####dd#0x2xx#dd#d#p#dd#d#
+#dd##d#####dd#x13xx#dd#d#d##d#d#
 #dd##dddddddd#######dd###dd#d#d#
 #dd##dddddddddddbdddddddddddd#d#
 #dd##duuddduuddddyydddyyd###d#d#
