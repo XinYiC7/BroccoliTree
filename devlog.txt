@@ -87,4 +87,6 @@ Gian Tricarico :: Modify and debug move() for Character
 Melanie Chow :: Completed instruction screen, added points to the dots and show score in game + # lives
 Xin Yi Chen :: Made eaten dots reappear after few seconds. Added ALQueue.
 Gian Tricarico :: Make Character class abstract and modify the constructors for character and its subclasses.
-                  Create ghosts and the jail for the ghosts.
+                  Create the jail for the ghosts.
+		  Create the ghosts.
+--------------------------------------------------------------
