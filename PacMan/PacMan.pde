@@ -63,10 +63,10 @@ void miniGame()
 void setup() {
   size(680, 720);
   background(0, 0, 0);
-  Blinky = new Ghost("1",16, 16);
-  Pinky = new Ghost("2",18, 16);
-  Inky = new Ghost("3",16, 17);
-  Clyde = new Ghost("4",18, 17);
+  Blinky = new Ghost("1",15, 16);
+  Pinky = new Ghost("2",17, 16);
+  Inky = new Ghost("3",15, 17);
+  Clyde = new Ghost("4",17, 17);
   setMap();
   setimages();
   font=createFont("imagine_font.ttf", 20);
@@ -86,16 +86,58 @@ void draw() {
     frameRate(6);
     player.move();
     
+    //Blinky
     if ( counter == 5) {
-      map[16][16] = "j";
+      map[Blinky.yPos][Blinky.xPos] = "j";
+      println(map[Blinky.yPos][Blinky.xPos]);
       Blinky.xPos = 16;
       Blinky.yPos = 14;
       map[Blinky.yPos][Blinky.xPos] = "1";
       Blinky.startMove = 1;
     }
-    println(counter);
     if (Blinky.startMove == 1){
       Blinky.move();
+    }
+    
+    //Pinky
+    if ( counter == 20) {
+      map[Pinky.yPos][Pinky.xPos] = "j";
+      println(map[Pinky.yPos][Pinky.xPos]);
+      Pinky.xPos = 16;
+      Pinky.yPos = 14;
+      map[Pinky.yPos][Pinky.xPos] = "2";
+      Pinky.startMove = 1;
+    }
+    if (Pinky.startMove == 1){
+      Pinky.move();
+    }
+    
+    //Inky
+    if ( counter == 30) {
+      map[Inky.yPos][Inky.xPos] = "j";
+      println(map[Inky.yPos][Inky.xPos]);
+      Inky.xPos = 16;
+      Inky.yPos = 14;
+      map[Inky.yPos][Inky.xPos] = "3";
+      Inky.startMove = 1;
+    }
+    //println(counter);
+    if (Inky.startMove == 1){
+      Inky.move();
+    }
+    
+    //Clyde
+    if ( counter == 40) {
+      map[Clyde.yPos][Clyde.xPos] = "j";
+      println(map[Clyde.yPos][Clyde.xPos]);
+      Clyde.xPos = 16;
+      Clyde.yPos = 14;
+      map[Clyde.yPos][Clyde.xPos] = "4";
+      Clyde.startMove = 1;
+    }
+    //println(counter);
+    if (Clyde.startMove == 1){
+      Clyde.move();
     }
     
     //print(player.direction);
