@@ -11,7 +11,10 @@ How to insert a new name and start a new game once user goes back to home.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNRESOLVED ISSUES:
-Pacman stops moving in current direction when the new direction inputted is invalid.
+-Pacman stops moving in current direction when the new direction inputted is invalid.
+-When a dot reappears in the space that Pacman is in currently, Pacman
+temporarily disappears because the @ symbol in maze.txt gets replaced with a d
+(or p or b).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
@@ -83,4 +86,5 @@ Gian Tricarico :: Modify and debug move() for Character
 -------------------------------------------------
 Melanie Chow :: Completed instruction screen, added points to the dots and show score in game + # lives
 Xin Yi Chen :: Made eaten dots reappear after few seconds. Added ALQueue.
-
+Gian Tricarico :: Make Character class abstract and modify the constructors for character and its subclasses.
+                  Create ghosts and the jail for the ghosts.
