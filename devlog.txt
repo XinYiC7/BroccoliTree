@@ -15,6 +15,7 @@ UNRESOLVED ISSUES:
 -When a dot reappears in the space that Pacman is in currently, Pacman
 temporarily disappears because the @ symbol in maze.txt gets replaced with a d
 (or p or b).
+-When ghosts move they make copies of themselves, part of the walls disappear.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
@@ -25,6 +26,7 @@ How to add text!
 MID-DEVELOPMENT DESIGN CHANGES: 
 -Make the background using a txt file instead of loading images and pixels
 -Making pacman move through the 2d array, rather than being on top and checking the pixel background.
+-Take out of the tower game due to lack of time.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 LESSONS LEARNED:
@@ -84,7 +86,7 @@ Gian Tricarico :: Modify and debug move() for Character
 --------------------------------------------------------------
 2017-06-04
 -------------------------------------------------
-Melanie Chow :: Completed instruction screen, added points to the dots and show score in game + # lives
+Melanie Chow :: Completed instruction screen, added points to the dots and show score in game + # lives. Made ghosts move. 
 Xin Yi Chen :: Made eaten dots reappear after few seconds. Added ALQueue.
 Gian Tricarico :: Make Character class abstract and modify the constructors for character and its subclasses.
                   Create the jail for the ghosts.
