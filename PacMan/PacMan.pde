@@ -2,26 +2,28 @@
 // Roster: Gian "Giant" Tricarico, Xin Yi Chen, Melanie "MChow" Chow
 // APCS2 pd4
 
+import java.util.ArrayList;
 //------------------------ Instance variables ------------------------
 
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
 int _blocksize = 20;
 
-Player player = new Player(null);
+Player player = new Player();
 Ghost Blinky; // red Ghost
 Ghost Pinky; // pink Ghost
 Ghost Inky; // blue (cyan) Ghost
 Ghost Clyde; // orange Ghost
-
 // 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
+static ArrayList<Integer> highscores= new ArrayList<Integer>(10);
+static ArrayList<String> hsnames=new ArrayList<String>(10);
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
 
 int counter = 0;
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
-
+boolean setName=false;
 //-----START SCREEN IMAGES & VARIABLES------
 PImage img; //startscreen
 
@@ -72,6 +74,7 @@ void setup() {
   font=createFont("imagine_font.ttf", 20);
   textFont(font);
   textAlign(LEFT, LEFT);
+  setScores();
 }
 
 void draw() {
@@ -79,7 +82,8 @@ void draw() {
   if (screen==0) {
     endGame();
     drawStartScreen();
-  } else if (screen==1) {
+  } 
+  else if (screen==1) {
     counter ++;
     background(0, 0, 0);
     drawMap();
@@ -142,7 +146,12 @@ void draw() {
     
     //print(player.direction);
     fill(255, 255, 255);
-    text("NAME:  "+player.name, 80, 50);
+        if (player.name.length()==0){
+      text("NAME: Start Typing to Enter", 60, 50);
+    }
+    else {
+      text("NAME:  "+player.name, 60, 50);
+    }
     fill (255, 25, 0);
     text("# LIVES:  "+player.numLives, 440, 65);
     fill(255, 283, 5);
@@ -183,6 +192,29 @@ void setimages() {
   pinkghost = loadImage("pinkghost.png");
   orangeghost = loadImage("orangeghost.png");
   blueghost = loadImage("blueghost.png");
+}
+
+void setScores(){
+  highscores.add(200); 
+  highscores.add(100);
+  highscores.add(30);
+  highscores.add(4);
+  highscores.add(0);
+  highscores.add(0);
+  highscores.add(0);
+  highscores.add(0);
+  highscores.add(0);
+  highscores.add(0);
+  hsnames.add("br");
+  hsnames.add("oc");
+  hsnames.add("co");
+  hsnames.add("li");
+  hsnames.add("tr");
+  hsnames.add("ee");
+  hsnames.add("");
+  hsnames.add("");
+  hsnames.add("");
+  hsnames.add("");
 }
 
 void mouseClicked() {
@@ -250,11 +282,36 @@ void drawh2p() { //draw how 2 play screen
 
 void drawhs() { //draw high score screen
   image(highscoretab, 0, 0);
+  text("Your score: "+ player.score, 230,200);
+  if (!scoreSubmitted){
+  insertScore(player.score);
+  }
+  for (int i=0; i<10; i++){
+    text(i+1+". "+hsnames.get(i)+" :  "+highscores.get(i), 200, 270+(20*i));
+  }
   if (overhome()) {
     image(homebutton2, 0, 0);
-  } else {
+  } 
+  else {
     image(homebutton1, 0, 0);
   }
+}
+
+boolean insertScore(int score){
+  scoreSubmitted=true;
+  for (int i=0; i<highscores.size(); i++){
+    if (score>highscores.get(i)){
+      highscores.add(i,score);
+      if (player.name.equals("")){
+        hsnames.add(i,"NONAME");
+      }
+      else{
+        hsnames.add(i,player.name);
+      }
+      return true;
+    }
+  }
+  return false;
 }
 
 boolean overstart() {
@@ -293,31 +350,24 @@ boolean overhome() {
   }
 }
 
-void endRound() {
-  //bring pacman home
-  PacMan.map[player.xPos][player.yPos]="x";
-  PacMan.map[24][28]="@";
-
-  //red ghost
-  PacMan.map[Blinky.xPos][Blinky.yPos]=Blinky.oldpiece;
-  PacMan.map[14][17]="0";
-
-  //pink ghost
-  PacMan.map[Pinky.xPos][Pinky.yPos]=Pinky.oldpiece;
-  PacMan.map[15][18]="1";
-
-  //orange ghost
-  PacMan.map[Inky.xPos][Inky.yPos]=Inky.oldpiece;
-  PacMan.map[16][17]="2";
-
-  //blue ghost
-  PacMan.map[Clyde.xPos][Clyde.yPos]=Blinky.oldpiece;
-  PacMan.map[17][18]="3";
+void endRound(){
+  fill(255,255,255);
+  text("oops! you lost a life. You have "+player.numLives+" lives left.", 90,100);
+  Player newRound=new Player();
+  newRound.score=player.score;
+  newRound.name=player.name;
+  newRound.numLives=player.numLives;
+  player=newRound;
 }
 
-void endGame() {
-  background(0, 0, 0);
+void endGame(){
+  background(0,0,0);
+  screen=0;
   setMap();
+  Player newguy=new Player();
+  newguy.name=player.name;
+  player.numLives=3;
+  player=newguy;;
 }
 
 //---------------------------MAP------------------------------------
@@ -470,5 +520,24 @@ void keyPressed() {
       player.direction=4;
     } else {
     }
+  }
+  else {
+    if (setName){
+    }
+    else {
+    if (key==ENTER | key==RETURN){
+      setName=true;
+    }
+  else if (key==BACKSPACE){
+      if (player.name.length()>=1){
+      player.name=player.name.substring(0,player.name.length()-1);
+      }
+      else {
+      }
+    }
+    else {
+    player.name+=key;
+    }
+  }
   }
 }

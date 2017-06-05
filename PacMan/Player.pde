@@ -1,6 +1,7 @@
 // Team BroccoliTree
 // Roster: Gian "Giant" Tricarico, Xin Yi Chen, Melanie "MChow" Chow
 // APCS2 pd4
+boolean scoreSubmitted;
 
 class Player extends Character {
   String name;
@@ -8,15 +9,16 @@ class Player extends Character {
   int numLives;
   int direction; // 1-up 2-down 3-right 4=left
 
-  Player(String newName) {
+  Player() {
     super();
-    this.name = newName;
+    this.name = "";
     this.xPos = 24;
     this.yPos = 28;
     this.state = 1; // Player starts out alive
     this.score=0;
     this.numLives=3;
     this.direction=0;
+    scoreSubmitted=false;
   }
 
   void encounter(Ghost a) {
@@ -49,13 +51,14 @@ class Player extends Character {
    */
   boolean move() {
     if (touchingGhost()){
-      if (numLives==1){
+      numLives-=1;
+      if (numLives==0){
         text("Game Over", xPos, yPos);
-        endGame();
+        screen=3;
+        setMap();
         return false;
       }
       else {
-      numLives-=1;
       text("WHOOPS! A life you lose.", xPos, yPos);
       endRound();
       return false;
