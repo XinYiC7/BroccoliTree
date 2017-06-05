@@ -27,7 +27,7 @@ class Ghost extends Character {
         oldPos = yPos;
         yPos -= speed;
         for (int i = oldPos; i > yPos; i --) {
-          PacMan.map[i][xPos] = "x";
+          PacMan.map[i][xPos] = PacMan.map[yPos][xPos];
         }
         PacMan.map[yPos][xPos]= ghostnum;
         return true;
@@ -44,7 +44,7 @@ class Ghost extends Character {
         oldPos = yPos;
         yPos += speed;
         for (int i = oldPos; i < yPos; i ++) {
-        PacMan.map[i][xPos] = "x";
+        PacMan.map[i][xPos] = PacMan.map[yPos][xPos];
         }
         PacMan.map[yPos][xPos]= ghostnum;
         return true;
@@ -60,7 +60,7 @@ class Ghost extends Character {
         oldPos = xPos;
         xPos += speed;
         for (int i = oldPos; i < xPos; i ++) {
-        PacMan.map[yPos][i] = "x";
+        PacMan.map[yPos][i] = PacMan.map[yPos][xPos];
         }
         PacMan.map[yPos][xPos] = ghostnum;
         return true;
@@ -76,7 +76,7 @@ class Ghost extends Character {
         oldPos = xPos;
         xPos -= speed;
         for (int i = oldPos; i > xPos; i --) {
-        PacMan.map[yPos][i] = "x";
+        PacMan.map[yPos][i] = PacMan.map[yPos][xPos];
         }
         PacMan.map[yPos][xPos] = ghostnum;
         return true;

@@ -29,6 +29,20 @@ class Player extends Character {
     String retStr = "";
     return retStr;
   }
+  
+  boolean touchingGhost(){
+    if (PacMan.map[xPos][yPos].equals("0")|
+        PacMan.map[xPos][yPos].equals("1")|
+        PacMan.map[xPos][yPos].equals("2")|
+        PacMan.map[xPos][yPos].equals("3")){
+          return true;
+        }
+    else {
+      return false;
+    }
+  }
+    
+    
 
   /* moves the player (Pac Man) according to its direction attribute
    If the player moves onto a dot, it eats the dot.

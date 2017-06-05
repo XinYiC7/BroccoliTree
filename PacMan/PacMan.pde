@@ -241,6 +241,14 @@ boolean overhome() {
   }
 }
 
+void endRound(){
+  image(pacman, 24,28);
+}
+
+void endGame(){
+  background(0,0,0);
+}
+
 //---------------------------MAP------------------------------------
 void setMap() {
   String[] lines = loadStrings("maze.txt");
