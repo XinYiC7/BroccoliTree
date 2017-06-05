@@ -48,6 +48,20 @@ class Player extends Character {
    If the player moves onto a dot, it eats the dot.
    */
   boolean move() {
+    if (touchingGhost()){
+      if (numLives==1){
+        text("Game Over", xPos, yPos);
+        endGame();
+        return false;
+      }
+      else {
+      numLives-=1;
+      text("WHOOPS! A life you lose.", xPos, yPos);
+      endRound();
+      return false;
+      }
+    }
+    else{
     int oldPos;
     Dot eatenDot;
     if (this.direction == 1) { // (up)
@@ -180,5 +194,6 @@ class Player extends Character {
     } else {      
       return false;
     }
+  }
   }
 }

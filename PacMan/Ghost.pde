@@ -4,6 +4,8 @@
 
 // class Ghost: for the ghosts that try to kill Pacman
 class Ghost extends Character {
+  
+  String oldpiece;
 
   // constructor
   Ghost(int x, int y) {
@@ -26,8 +28,9 @@ class Ghost extends Character {
         PacMan.map[yPos-1][xPos].equals("y"))) {
         oldPos = yPos;
         yPos -= speed;
+        this.oldpiece=PacMan.map[yPos][xPos];
         for (int i = oldPos; i > yPos; i --) {
-          PacMan.map[i][xPos] = PacMan.map[yPos][xPos];
+          PacMan.map[i][xPos] = oldpiece;
         }
         PacMan.map[yPos][xPos]= ghostnum;
         return true;
@@ -43,8 +46,9 @@ class Ghost extends Character {
         PacMan.map[yPos+1][xPos].equals("y"))) { 
         oldPos = yPos;
         yPos += speed;
+        this.oldpiece=PacMan.map[yPos][xPos];
         for (int i = oldPos; i < yPos; i ++) {
-        PacMan.map[i][xPos] = PacMan.map[yPos][xPos];
+        PacMan.map[i][xPos] = oldpiece;
         }
         PacMan.map[yPos][xPos]= ghostnum;
         return true;
@@ -59,8 +63,9 @@ class Ghost extends Character {
         PacMan.map[yPos][xPos+1].equals("y"))) { 
         oldPos = xPos;
         xPos += speed;
+        this.oldpiece=PacMan.map[yPos][xPos];
         for (int i = oldPos; i < xPos; i ++) {
-        PacMan.map[yPos][i] = PacMan.map[yPos][xPos];
+        PacMan.map[yPos][i] = oldpiece;
         }
         PacMan.map[yPos][xPos] = ghostnum;
         return true;
@@ -75,8 +80,9 @@ class Ghost extends Character {
         PacMan.map[yPos][xPos-1].equals("y"))) { 
         oldPos = xPos;
         xPos -= speed;
+        this.oldpiece=PacMan.map[yPos][xPos];
         for (int i = oldPos; i > xPos; i --) {
-        PacMan.map[yPos][i] = PacMan.map[yPos][xPos];
+        PacMan.map[yPos][i] = oldpiece;
         }
         PacMan.map[yPos][xPos] = ghostnum;
         return true;

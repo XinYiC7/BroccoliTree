@@ -75,6 +75,7 @@ void setup() {
 void draw() {
   // counter ++;
   if (screen==0) {
+    endGame();
     drawStartScreen();
   } 
   else if (screen==1) {
@@ -242,11 +243,30 @@ boolean overhome() {
 }
 
 void endRound(){
-  image(pacman, 24,28);
+  //bring pacman home
+  PacMan.map[player.xPos][player.yPos]="x";
+  PacMan.map[24][28]="@";
+  
+  //red ghost
+  PacMan.map[Blinky.xPos][Blinky.yPos]=Blinky.oldpiece;
+  PacMan.map[14][17]="0";
+  
+  //pink ghost
+  PacMan.map[Pinky.xPos][Pinky.yPos]=Pinky.oldpiece;
+  PacMan.map[15][18]="1";
+  
+  //orange ghost
+  PacMan.map[Inky.xPos][Inky.yPos]=Inky.oldpiece;
+  PacMan.map[16][17]="2";
+  
+  //blue ghost
+  PacMan.map[Clyde.xPos][Clyde.yPos]=Blinky.oldpiece;
+  PacMan.map[17][18]="3";
 }
 
 void endGame(){
   background(0,0,0);
+  setMap();
 }
 
 //---------------------------MAP------------------------------------
