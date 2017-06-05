@@ -39,7 +39,7 @@ class ALQueue<T>
 
 
   // means of "peeking" at the front item
-  T peekFront() 
+  T peek() 
   {
     return _queue.get(0);
   }//O(1)

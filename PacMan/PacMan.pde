@@ -6,17 +6,19 @@
 
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
 int _blocksize = 20;
+
 Player player = new Player(null);
 Ghost Blinky; // red Ghost
 Ghost Pinky; // pink Ghost
 Ghost Inky; // blue (cyan) Ghost
 Ghost Clyde; // orange Ghost
+
 // 3D array for use in filling the processing window:
 static String[][] map = new String[32][32];
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
 
-// int counter = 0;
+int counter = 0;
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 
@@ -61,10 +63,10 @@ void miniGame()
 void setup() {
   size(680, 720);
   background(0, 0, 0);
-  Blinky = new Ghost(14, 17);
-  Pinky = new Ghost(15, 18);
-  Inky = new Ghost(16, 17);
-  Clyde = new Ghost(17, 18);
+  Blinky = new Ghost("1",16, 16);
+  Pinky = new Ghost("2",18, 16);
+  Inky = new Ghost("3",16, 17);
+  Clyde = new Ghost("4",18, 17);
   setMap();
   setimages();
   font=createFont("imagine_font.ttf", 20);
@@ -73,21 +75,29 @@ void setup() {
 }
 
 void draw() {
-  // counter ++;
+
   if (screen==0) {
     endGame();
     drawStartScreen();
-  } 
-  else if (screen==1) {
+  } else if (screen==1) {
+    counter ++;
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move();
-    Blinky.move((int) random(5),"0");
-    Pinky.move((int)random(5), "1");
-    print (Pinky.xPos+ " ");
-    Inky.move((int)random(5), "2");
-    Clyde.move((int)random(5), "3"); 
+    
+    if ( counter == 5) {
+      map[16][16] = "j";
+      Blinky.xPos = 16;
+      Blinky.yPos = 14;
+      map[Blinky.yPos][Blinky.xPos] = "1";
+      Blinky.startMove = 1;
+    }
+    println(counter);
+    if (Blinky.startMove == 1){
+      Blinky.move();
+    }
+    
     //print(player.direction);
     fill(255, 255, 255);
     text("NAME:  "+player.name, 80, 50);
@@ -95,15 +105,14 @@ void draw() {
     text("# LIVES:  "+player.numLives, 440, 65);
     fill(255, 283, 5);
     text("SCORE:  "+player.score, 450, 40);
-  } 
-  else if (screen==2) {
+  } else if (screen==2) {
     drawh2p();
-  } 
-  else if (screen==3) {
+  } else if (screen==3) {
     drawhs();
   }
 
-  if ((frameCount % 5 == 0) && (!eaten.isEmpty())) {
+  //dots reappear after 5 seconds
+  if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
     reappear(eaten.dequeue());
   }
 
@@ -242,30 +251,30 @@ boolean overhome() {
   }
 }
 
-void endRound(){
+void endRound() {
   //bring pacman home
   PacMan.map[player.xPos][player.yPos]="x";
   PacMan.map[24][28]="@";
-  
+
   //red ghost
   PacMan.map[Blinky.xPos][Blinky.yPos]=Blinky.oldpiece;
   PacMan.map[14][17]="0";
-  
+
   //pink ghost
   PacMan.map[Pinky.xPos][Pinky.yPos]=Pinky.oldpiece;
   PacMan.map[15][18]="1";
-  
+
   //orange ghost
   PacMan.map[Inky.xPos][Inky.yPos]=Inky.oldpiece;
   PacMan.map[16][17]="2";
-  
+
   //blue ghost
   PacMan.map[Clyde.xPos][Clyde.yPos]=Blinky.oldpiece;
   PacMan.map[17][18]="3";
 }
 
-void endGame(){
-  background(0,0,0);
+void endGame() {
+  background(0, 0, 0);
   setMap();
 }
 
@@ -330,33 +339,38 @@ void drawMap() {
       }
 
       // Red Ghost:
-      else if ( map[a][b].equals("0") ) {
+      else if ( map[a][b].equals("1") ) {
         if (Blinky.state == 0) {
         }
         image(redghost, b * _blocksize, a * _blocksize + 75);
       }
 
       // Pink Ghost:
-      else if ( map[a][b].equals("1") ) {
+      else if ( map[a][b].equals("2") ) {
         if (Pinky.state == 0) {
         }
         image(pinkghost, b * _blocksize, a * _blocksize + 75);
       }
 
       // Blue (Cyan) Ghost:
-      else if ( map[a][b].equals("2") ) {
+      else if ( map[a][b].equals("3") ) {
         if (Inky.state == 0) {
         }
         image(blueghost, b * _blocksize, a * _blocksize + 75);
       }
 
       // Orange Ghost:
-      else if ( map[a][b].equals("3") ) {
+      else if ( map[a][b].equals("4") ) {
         if (Clyde.state == 0) {
         }
         image(orangeghost, b * _blocksize, a * _blocksize + 75);
       }
-
+      // Jail for ghosts:
+      else if (map[a][b].equals("j")) {
+        noStroke();
+        fill(0, 0, 0);
+        rect(b * _blocksize, a * _blocksize + 75, _blocksize, _blocksize);
+      }
       // Stuy walls
       else if (player.state==2) {
         if (map[a][b].equals("s")) {
@@ -391,10 +405,13 @@ void drawMap() {
 //dots reappearing after 5 sec
 void reappear(Dot x) {
   if (x.whatAmI == 1) {
+    //normal dots
     map[x.yPos][x.xPos] = "d";
   } else if (x.whatAmI == 2) {
+    //power pellets
     map[x.yPos][x.xPos] = "p";
   } else {
+    //broccoli tree
     map[x.yPos][x.xPos] = "b";
   }
 }

@@ -91,10 +91,8 @@ class Player extends Character {
           eaten.enqueue(eatenDot);
           this.score+=30;
         }
-
         return true;
       }
-
       return false;
     } else if (this.direction == 2) { // (down)
       if (PacMan.map[yPos+1][xPos].equals("d")|

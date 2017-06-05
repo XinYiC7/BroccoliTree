@@ -6,15 +6,24 @@
 class Ghost extends Character {
   
   String oldpiece;
+  String identity; //1:Blinky, 2:Pinky, 3:Inky, 4:Clyde
+  int startMove;
 
   // constructor
-  Ghost(int x, int y) {
+  Ghost(String identity,int x, int y) {
     super();
+    this.identity = identity;
     this.xPos = x;
     this.yPos = y;
     this.state = 0; // ghosts start in jail
   }
+  
   boolean move(){
+    int direction = ((int)random(4))+1;
+    while (!(move(direction, this.identity))){
+      direction = ((int)random(4))+1;
+    }
+    //move(direction,this.identity);
     return true;
   }
 
@@ -25,17 +34,18 @@ class Ghost extends Character {
         PacMan.map[yPos-1][xPos].equals("s") |
         PacMan.map[yPos-1][xPos].equals("t")|
         PacMan.map[yPos-1][xPos].equals("u") |
-        PacMan.map[yPos-1][xPos].equals("y"))) {
+        PacMan.map[yPos-1][xPos].equals("y")|
+        PacMan.map[yPos-1][xPos].equals("j"))) {
+        this.oldpiece=PacMan.map[yPos--][xPos];
         oldPos = yPos;
         yPos -= speed;
-        this.oldpiece=PacMan.map[yPos][xPos];
+       
         for (int i = oldPos; i > yPos; i --) {
           PacMan.map[i][xPos] = oldpiece;
         }
         PacMan.map[yPos][xPos]= ghostnum;
         return true;
       }
-
       return false;
     }
     else if (x == 2) { // (down)
@@ -43,10 +53,12 @@ class Ghost extends Character {
         PacMan.map[yPos+1][xPos].equals("s") |
         PacMan.map[yPos+1][xPos].equals("t")|
         PacMan.map[yPos+1][xPos].equals("u")|
-        PacMan.map[yPos+1][xPos].equals("y"))) { 
+        PacMan.map[yPos+1][xPos].equals("y")|
+        PacMan.map[yPos+1][xPos].equals("j"))) { 
+          this.oldpiece=PacMan.map[yPos++][xPos];
         oldPos = yPos;
         yPos += speed;
-        this.oldpiece=PacMan.map[yPos][xPos];
+        
         for (int i = oldPos; i < yPos; i ++) {
         PacMan.map[i][xPos] = oldpiece;
         }
@@ -60,10 +72,12 @@ class Ghost extends Character {
         PacMan.map[yPos][xPos+1].equals("s") |
         PacMan.map[yPos][xPos+1].equals("t")|
         PacMan.map[yPos][xPos+1].equals("u")|
-        PacMan.map[yPos][xPos+1].equals("y"))) { 
+        PacMan.map[yPos][xPos+1].equals("y")|
+        PacMan.map[yPos][xPos+1].equals("j"))) { 
+          this.oldpiece=PacMan.map[yPos][xPos];
         oldPos = xPos;
         xPos += speed;
-        this.oldpiece=PacMan.map[yPos][xPos];
+        
         for (int i = oldPos; i < xPos; i ++) {
         PacMan.map[yPos][i] = oldpiece;
         }
@@ -77,10 +91,12 @@ class Ghost extends Character {
         PacMan.map[yPos][xPos-1].equals("s") |
         PacMan.map[yPos][xPos-1].equals("t")|
         PacMan.map[yPos][xPos-1].equals("u")|
-        PacMan.map[yPos][xPos-1].equals("y"))) { 
+        PacMan.map[yPos][xPos-1].equals("y")|
+        PacMan.map[yPos][xPos-1].equals("j"))) { 
+           this.oldpiece=PacMan.map[yPos][xPos];
         oldPos = xPos;
         xPos -= speed;
-        this.oldpiece=PacMan.map[yPos][xPos];
+       
         for (int i = oldPos; i > xPos; i --) {
         PacMan.map[yPos][i] = oldpiece;
         }
