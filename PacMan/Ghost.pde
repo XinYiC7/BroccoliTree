@@ -142,9 +142,11 @@ class Ghost extends Character {
    }
    }*/
 
+  /*
   boolean inJail() {
-    return false;
-  }
+   return false;
+   }
+   */
 
   void normalize() {
   }
