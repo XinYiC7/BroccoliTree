@@ -364,7 +364,7 @@ void endGame(){
   Player newguy=new Player();
   newguy.name=player.name;
   player.numLives=3;
-  player=newguy;;
+  player=newguy;
 }
 
 //---------------------------MAP------------------------------------
