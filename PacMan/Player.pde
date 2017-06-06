@@ -25,8 +25,10 @@ class Player extends Character {
   void encounter(Ghost a) {
   }
 
+  /*
   void eat(Dot a) {
-  }
+   }
+   */
 
   String toString() {
     String retStr = "";
