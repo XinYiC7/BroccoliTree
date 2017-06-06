@@ -7,7 +7,10 @@ pd 4
 PACMAN
 
 OBSTACLES OVERCOME:
-How to insert a new name and start a new game once user goes back to home.
+-How to insert a new name and start a new game once user goes back to home.
+-How to restart the round (move PacMan and ghosts back to original position,but no the dots);
+-Ghosts not longer make copies of themselves and walls do not disappear when they move
+-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNRESOLVED ISSUES:
@@ -15,12 +18,13 @@ UNRESOLVED ISSUES:
 -When a dot reappears in the space that Pacman is in currently, Pacman
 temporarily disappears because the @ symbol in maze.txt gets replaced with a d
 (or p or b).
--When ghosts move they make copies of themselves, part of the walls disappear.
+-When PacMan dies he leaves his body there <this becomes inactive>.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
 How to make hover buttons! 
 How to add text!
+How to save text in a file.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MID-DEVELOPMENT DESIGN CHANGES: 
@@ -97,3 +101,4 @@ Gian Tricarico :: Make Character class abstract and modify the constructors for 
 Gian Tricarico :: Modify instance vars and constructors and comment out unnecessary methods
                   Update UML diagram
 		  Make it so that ghosts can leave jail throughout the game rather than only at the beginning
+Melanie Chow:: Completed name insertion and score board: process text file and save to text file. Also made it so that it can save multiple highscores (score submitted everytime game is played).
