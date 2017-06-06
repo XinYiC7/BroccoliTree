@@ -92,3 +92,8 @@ Gian Tricarico :: Make Character class abstract and modify the constructors for 
                   Create the jail for the ghosts.
 		  Create the ghosts.
 --------------------------------------------------------------
+2017-06-05
+--------------------------------------------------------------
+Gian Tricarico :: Modify instance vars and constructors and comment out unnecessary methods
+                  Update UML diagram
+		  Make it so that ghosts can leave jail throughout the game rather than only at the beginning
