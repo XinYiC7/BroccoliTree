@@ -21,7 +21,7 @@ Boolean scoreSubmitted = false;
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
 
-// int counter = 0; We can use the built-in variable frameCount instead.
+int counter = 0; //We can use the built-in variable frameCount instead.
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 Boolean setName=false;
@@ -84,14 +84,14 @@ void draw() {
     endGame();
     drawStartScreen();
   } else if (screen==1) {
-    // counter ++;
+    counter ++;
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move();
 
     //Blinky
-    if ( frameCount == 5) {
+    if ( counter == 5) {
       map[Blinky.yPos][Blinky.xPos] = "j";
       //println(map[Blinky.yPos][Blinky.xPos]);
       Blinky.xPos = 16;
@@ -104,7 +104,7 @@ void draw() {
     }
 
     //Pinky
-    if ( frameCount == 20) {
+    if ( counter == 20) {
       map[Pinky.yPos][Pinky.xPos] = "j";
       //println(map[Pinky.yPos][Pinky.xPos]);
       Pinky.xPos = 16;
@@ -117,7 +117,7 @@ void draw() {
     }
 
     //Inky
-    if ( frameCount == 30) {
+    if ( counter == 30) {
       map[Inky.yPos][Inky.xPos] = "j";
       //println(map[Inky.yPos][Inky.xPos]);
       Inky.xPos = 16;
@@ -131,7 +131,7 @@ void draw() {
     }
 
     //Clyde
-    if ( frameCount == 40) {
+    if ( counter == 40) {
       map[Clyde.yPos][Clyde.xPos] = "j";
       //println(map[Clyde.yPos][Clyde.xPos]);
       Clyde.xPos = 16;
@@ -162,7 +162,7 @@ void draw() {
   }
 
   //dots reappear after 5 seconds
-  if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
+  if ((counter % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
     reappear(eaten.dequeue());
   }
 
