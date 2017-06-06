@@ -1,4 +1,2 @@
+NONAME,440
 Melanie,200
-Xin Yi,150
-Gian,100
-BrocTree,70

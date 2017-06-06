@@ -93,7 +93,7 @@ void draw() {
     //Blinky
     if ( counter == 5) {
       map[Blinky.yPos][Blinky.xPos] = "j";
-      println(map[Blinky.yPos][Blinky.xPos]);
+      //println(map[Blinky.yPos][Blinky.xPos]);
       Blinky.xPos = 16;
       Blinky.yPos = 14;
       map[Blinky.yPos][Blinky.xPos] = "1";
@@ -106,7 +106,7 @@ void draw() {
     //Pinky
     if ( counter == 20) {
       map[Pinky.yPos][Pinky.xPos] = "j";
-      println(map[Pinky.yPos][Pinky.xPos]);
+      //println(map[Pinky.yPos][Pinky.xPos]);
       Pinky.xPos = 16;
       Pinky.yPos = 14;
       map[Pinky.yPos][Pinky.xPos] = "2";
@@ -119,7 +119,7 @@ void draw() {
     //Inky
     if ( counter == 30) {
       map[Inky.yPos][Inky.xPos] = "j";
-      println(map[Inky.yPos][Inky.xPos]);
+      //println(map[Inky.yPos][Inky.xPos]);
       Inky.xPos = 16;
       Inky.yPos = 14;
       map[Inky.yPos][Inky.xPos] = "3";
@@ -133,7 +133,7 @@ void draw() {
     //Clyde
     if ( counter == 40) {
       map[Clyde.yPos][Clyde.xPos] = "j";
-      println(map[Clyde.yPos][Clyde.xPos]);
+      //println(map[Clyde.yPos][Clyde.xPos]);
       Clyde.xPos = 16;
       Clyde.yPos = 14;
       map[Clyde.yPos][Clyde.xPos] = "4";
