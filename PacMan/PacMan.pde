@@ -20,7 +20,7 @@ static ArrayList<String> hsnames=new ArrayList<String>(10);
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
 
-int counter = 0;
+// int counter = 0; We can use the built-in variable frameCount instead.
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 boolean setName=false;
@@ -84,14 +84,14 @@ void draw() {
     drawStartScreen();
   } 
   else if (screen==1) {
-    counter ++;
+    // counter ++;
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move();
     
     //Blinky
-    if ( counter == 5) {
+    if ( frameCount == 5) {
       map[Blinky.yPos][Blinky.xPos] = "j";
       //println(map[Blinky.yPos][Blinky.xPos]);
       Blinky.xPos = 16;
@@ -104,7 +104,7 @@ void draw() {
     }
     
     //Pinky
-    if ( counter == 20) {
+    if ( frameCount == 20) {
       map[Pinky.yPos][Pinky.xPos] = "j";
       //println(map[Pinky.yPos][Pinky.xPos]);
       Pinky.xPos = 16;
@@ -117,7 +117,7 @@ void draw() {
     }
     
     //Inky
-    if ( counter == 30) {
+    if ( frameCount == 30) {
       map[Inky.yPos][Inky.xPos] = "j";
       //println(map[Inky.yPos][Inky.xPos]);
       Inky.xPos = 16;
@@ -131,7 +131,7 @@ void draw() {
     }
     
     //Clyde
-    if ( counter == 40) {
+    if ( frameCount == 40) {
       map[Clyde.yPos][Clyde.xPos] = "j";
       //println(map[Clyde.yPos][Clyde.xPos]);
       Clyde.xPos = 16;
