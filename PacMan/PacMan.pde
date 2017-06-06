@@ -20,6 +20,8 @@ static String[][] map = new String[32][32];
 static ArrayList<Integer> highscores= new ArrayList<Integer>(10);
 static ArrayList<String> hsnames=new ArrayList<String>(10);
 Boolean scoreSubmitted = false;
+Boolean endRound = false;
+int endRoundCtr = 0;
 //eaten dots
 LLQueue<Dot> eaten = new LLQueue<Dot>();
 LinkedList<Ghost> liveGhosts;
@@ -100,7 +102,7 @@ void draw() {
     frameRate(6);
     player.move();
 
-    if (frameCount % 10 == 0) { // every 10 frames
+    if (frameCount % 36 == 0) { // every 36 frames
       parole();
     }
 
@@ -108,62 +110,13 @@ void draw() {
       g.move();
     }
 
-    /*
-      //Blinky
-     if ( frameCount == 5) {
-     map[Blinky.yPos][Blinky.xPos] = "j";
-     //println(map[Blinky.yPos][Blinky.xPos]);
-     Blinky.xPos = 16;
-     Blinky.yPos = 14;
-     map[Blinky.yPos][Blinky.xPos] = "1";
-     Blinky.startMove = 1;
-     }
-     if (Blinky.startMove == 1) {
-     Blinky.move();
-     }
-     
-     //Pinky
-     if ( frameCount == 20) {
-     map[Pinky.yPos][Pinky.xPos] = "j";
-     //println(map[Pinky.yPos][Pinky.xPos]);
-     Pinky.xPos = 16;
-     Pinky.yPos = 14;
-     map[Pinky.yPos][Pinky.xPos] = "2";
-     Pinky.startMove = 1;
-     }
-     if (Pinky.startMove == 1) {
-     Pinky.move();
-     }
-     
-     //Inky
-     if ( frameCount == 30) {
-     map[Inky.yPos][Inky.xPos] = "j";
-     //println(map[Inky.yPos][Inky.xPos]);
-     Inky.xPos = 16;
-     Inky.yPos = 14;
-     map[Inky.yPos][Inky.xPos] = "3";
-     Inky.startMove = 1;
-     }
-     //println(counter);
-     if (Inky.startMove == 1) {
-     Inky.move();
-     }
-     
-     //Clyde
-     if ( frameCount == 40) {
-     map[Clyde.yPos][Clyde.xPos] = "j";
-     //println(map[Clyde.yPos][Clyde.xPos]);
-     Clyde.xPos = 16;
-     Clyde.yPos = 14;
-     map[Clyde.yPos][Clyde.xPos] = "4";
-     Clyde.startMove = 1;
-     }
-     //println(counter);
-     if (Clyde.startMove == 1) {
-     Clyde.move();
-     }
-     */
-
+    if (endRoundCtr == 12) {
+      endRound = false;
+      endRoundCtr = 0;
+    }
+    if (endRound == true) {
+      endRoundScreen();
+    }
     //print(player.direction);
     fill(255, 255, 255);
     if (player.name.length()==0) {
@@ -193,8 +146,9 @@ void draw() {
 // Takes a Ghost out of the jail, if there are any in the jail
 Ghost parole()
 {
+  Ghost freedGhost;
   try {
-    Ghost freedGhost = jailedGhosts.dequeue();
+    freedGhost = jailedGhosts.dequeue();
   }
   catch (NullPointerException exception) {
     return null;
@@ -387,18 +341,25 @@ boolean overhome() {
 }
 
 void endRound() {
-  fill(255, 255, 255);
-  text("oops! you lost a life. You have "+player.numLives+" lives left.", 90, 100);
   map[player.yPos][player.xPos] = "#";
   player.xPos = 24;
   player.yPos = 28;
   map[28][24] = "@";
+  this.endRound = true;
   /*
   Player newRound=new Player();
    newRound.score=player.score;
    newRound.name=player.name;
    newRound.numLives=player.numLives;
    player=newRound;*/
+}
+
+void endRoundScreen() {
+  background(0);
+  fill(255, 255, 255);
+  text("oops! you lost a life. You have "+player.numLives+" lives left.", 90, 100);
+  endRoundCtr ++;
+  //delay(3000);
 }
 
 void endGame() {

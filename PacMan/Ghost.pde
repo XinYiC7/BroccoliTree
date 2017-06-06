@@ -30,116 +30,162 @@ class Ghost extends Character {
 
   boolean move(int x, String ghostnum) {
     int oldPos;
-    if (x == 1) { // (up)
-      if (!(PacMan.map[yPos-1][xPos].equals("#")|
-        PacMan.map[yPos-1][xPos].equals("s") |
-        PacMan.map[yPos-1][xPos].equals("t")|
-        PacMan.map[yPos-1][xPos].equals("u") |
-        PacMan.map[yPos-1][xPos].equals("y")|
-        PacMan.map[yPos-1][xPos].equals("j")|
-        PacMan.map[yPos-1][xPos].equals("1")|
-        PacMan.map[yPos-1][xPos].equals("2")|
-        PacMan.map[yPos-1][xPos].equals("3")|
-        PacMan.map[yPos-1][xPos].equals("4")
-        )) {
+    if ( this.xPos == player.xPos && this.yPos == player.yPos && player.state == 2) {
 
-        this.oldpiece=PacMan.map[yPos-1][xPos];
-        oldPos = yPos;
-        yPos -= speed;
-        if (!oldpiece.equals("@")) {
+      return false;
+    } else {
+      if (x == 1) { // (up)
+        if (!(PacMan.map[yPos-1][xPos].equals("#")|
+          PacMan.map[yPos-1][xPos].equals("s") |
+          PacMan.map[yPos-1][xPos].equals("t")|
+          PacMan.map[yPos-1][xPos].equals("u") |
+          PacMan.map[yPos-1][xPos].equals("y")|
+          PacMan.map[yPos-1][xPos].equals("j")|
+          PacMan.map[yPos-1][xPos].equals("1")|
+          PacMan.map[yPos-1][xPos].equals("2")|
+          PacMan.map[yPos-1][xPos].equals("3")|
+          PacMan.map[yPos-1][xPos].equals("4")
+          )) {
+          this.oldpiece=PacMan.map[yPos-1][xPos];
+          oldPos = yPos;
+          yPos -= speed;
+
+          /*
+          if (oldpiece.equals("@")) {
+           PacMan.map[oldPos][xPos] = "x";
+           if (player.state == 2) {
+           } else {
+           PacMan.map[yPos][xPos]= ghostnum;
+           }
+           } else { */
           PacMan.map[oldPos][xPos] = oldpiece;
+          PacMan.map[yPos][xPos]= ghostnum;
+          //}
+          return true;
         }
-        else{
-          PacMan.map[oldPos][xPos] = "x";
-        }
-        PacMan.map[yPos][xPos]= ghostnum;
+        return false;
+      } else if (x == 2) { // (down)
+        if (!(PacMan.map[yPos+1][xPos].equals("#")|
+          PacMan.map[yPos+1][xPos].equals("s") |
+          PacMan.map[yPos+1][xPos].equals("t")|
+          PacMan.map[yPos+1][xPos].equals("u")|
+          PacMan.map[yPos+1][xPos].equals("y")|
+          PacMan.map[yPos+1][xPos].equals("j")|
+          PacMan.map[yPos+1][xPos].equals("1")|
+          PacMan.map[yPos+1][xPos].equals("2")|
+          PacMan.map[yPos+1][xPos].equals("3")|
+          PacMan.map[yPos+1][xPos].equals("4")
+          )) {
 
-        return true;
+          this.oldpiece=PacMan.map[yPos+1][xPos];
+          oldPos = yPos;
+          yPos += speed;        
+          /*
+        if (!oldpiece.equals("@")) {
+           PacMan.map[oldPos][xPos] = oldpiece;
+           } else {
+           PacMan.map[oldPos][xPos] = "x";
+           }
+           PacMan.map[yPos][xPos]= ghostnum;
+           */
+/*
+          if (oldpiece.equals("@")) {
+            PacMan.map[oldPos][xPos] = "x";
+            if (player.state == 2) {
+            } else {
+              PacMan.map[yPos][xPos]= ghostnum;
+            }
+          } else {  */ 
+            PacMan.map[oldPos][xPos] = oldpiece;
+            PacMan.map[yPos][xPos]= ghostnum;
+        //  }
+          return true;
+        } 
+        return false;
+      } else if (x == 3) { // (right)
+        if (!(PacMan.map[yPos][xPos+1].equals("#")|
+          PacMan.map[yPos][xPos+1].equals("s") |
+          PacMan.map[yPos][xPos+1].equals("t")|
+          PacMan.map[yPos][xPos+1].equals("u")|
+          PacMan.map[yPos][xPos+1].equals("y")|
+          PacMan.map[yPos][xPos+1].equals("j")|
+          PacMan.map[yPos][xPos+1].equals("1")|
+          PacMan.map[yPos][xPos+1].equals("2")|
+          PacMan.map[yPos][xPos+1].equals("3")|
+          PacMan.map[yPos][xPos+1].equals("4")
+          )) {
+
+          this.oldpiece=PacMan.map[yPos][xPos+1];
+          oldPos = xPos;
+          xPos += speed;
+          /*
+        if (!oldpiece.equals("@")) {
+           PacMan.map[yPos][oldPos] = oldpiece;
+           } else {
+           PacMan.map[yPos][oldPos] = "x";
+           }
+           PacMan.map[yPos][xPos] = ghostnum;
+           */
+/*
+          if (oldpiece.equals("@")) {
+            PacMan.map[yPos][oldPos] = "x";
+            if (player.state == 2) {
+            } else {
+              PacMan.map[yPos][xPos]= ghostnum;
+            }
+          } else {    */
+            PacMan.map[yPos][oldPos]= oldpiece;
+            PacMan.map[yPos][xPos]= ghostnum;
+          //}
+
+          return true;
+        } 
+        return false;
+      } else if (x == 4) { // (left)
+        if (!(PacMan.map[yPos][xPos-1].equals("#")|
+          PacMan.map[yPos][xPos-1].equals("s") |
+          PacMan.map[yPos][xPos-1].equals("t")|
+          PacMan.map[yPos][xPos-1].equals("u")|
+          PacMan.map[yPos][xPos-1].equals("y")|
+          PacMan.map[yPos][xPos-1].equals("j")|
+          PacMan.map[yPos][xPos-1].equals("1")|
+          PacMan.map[yPos][xPos-1].equals("2")|
+          PacMan.map[yPos][xPos-1].equals("3")|
+          PacMan.map[yPos][xPos-1].equals("4")
+          )) {
+          this.oldpiece=PacMan.map[yPos][xPos-1];
+          oldPos = xPos;
+          xPos -= speed;
+          /*
+        if (!oldpiece.equals("@")) {
+           PacMan.map[yPos][oldPos] = oldpiece;
+           } else {
+           PacMan.map[yPos][oldPos] = "x";
+           }
+           PacMan.map[yPos][xPos] = ghostnum;
+           */
+/*
+          if (oldpiece.equals("@")) {
+            PacMan.map[yPos][oldPos] = "x";
+            if (player.state == 2) {
+            } else {
+              PacMan.map[yPos][xPos]= ghostnum;
+            }
+          } else {*/
+            PacMan.map[yPos][oldPos]= oldpiece;
+            PacMan.map[yPos][xPos]= ghostnum;
+          //}
+          return true;
+        }
+        return false;
+      } else {      
+        return false;
       }
-      return false;
-    } else if (x == 2) { // (down)
-      if (!(PacMan.map[yPos+1][xPos].equals("#")|
-        PacMan.map[yPos+1][xPos].equals("s") |
-        PacMan.map[yPos+1][xPos].equals("t")|
-        PacMan.map[yPos+1][xPos].equals("u")|
-        PacMan.map[yPos+1][xPos].equals("y")|
-        PacMan.map[yPos+1][xPos].equals("j")|
-        PacMan.map[yPos+1][xPos].equals("1")|
-        PacMan.map[yPos+1][xPos].equals("2")|
-        PacMan.map[yPos+1][xPos].equals("3")|
-        PacMan.map[yPos+1][xPos].equals("4")
-        )) {
-
-        this.oldpiece=PacMan.map[yPos+1][xPos];
-        oldPos = yPos;
-        yPos += speed;        
-        if (!oldpiece.equals("@")) {
-          PacMan.map[oldPos][xPos] = oldpiece;
-        }
-        else{
-          PacMan.map[oldPos][xPos] = "x";
-        }
-        PacMan.map[yPos][xPos]= ghostnum;
-
-        return true;
-      } 
-      return false;
-    } else if (x == 3) { // (right)
-      if (!(PacMan.map[yPos][xPos+1].equals("#")|
-        PacMan.map[yPos][xPos+1].equals("s") |
-        PacMan.map[yPos][xPos+1].equals("t")|
-        PacMan.map[yPos][xPos+1].equals("u")|
-        PacMan.map[yPos][xPos+1].equals("y")|
-        PacMan.map[yPos][xPos+1].equals("j")|
-        PacMan.map[yPos][xPos+1].equals("1")|
-        PacMan.map[yPos][xPos+1].equals("2")|
-        PacMan.map[yPos][xPos+1].equals("3")|
-        PacMan.map[yPos][xPos+1].equals("4")
-        )) {
-
-        this.oldpiece=PacMan.map[yPos][xPos+1];
-        oldPos = xPos;
-        xPos += speed;
-        if (!oldpiece.equals("@")) {
-          PacMan.map[yPos][oldPos] = oldpiece;
-        }
-        else{
-          PacMan.map[yPos][oldPos] = "x";
-        }
-        PacMan.map[yPos][xPos] = ghostnum;
-
-        return true;
-      } 
-      return false;
-    } else if (x == 4) { // (left)
-      if (!(PacMan.map[yPos][xPos-1].equals("#")|
-        PacMan.map[yPos][xPos-1].equals("s") |
-        PacMan.map[yPos][xPos-1].equals("t")|
-        PacMan.map[yPos][xPos-1].equals("u")|
-        PacMan.map[yPos][xPos-1].equals("y")|
-        PacMan.map[yPos][xPos-1].equals("j")|
-        PacMan.map[yPos][xPos-1].equals("1")|
-        PacMan.map[yPos][xPos-1].equals("2")|
-        PacMan.map[yPos][xPos-1].equals("3")|
-        PacMan.map[yPos][xPos-1].equals("4")
-        )) {
-        this.oldpiece=PacMan.map[yPos][xPos-1];
-        oldPos = xPos;
-        xPos -= speed;
-        if (!oldpiece.equals("@")) {
-          PacMan.map[yPos][oldPos] = oldpiece;
-        }
-        else{
-          PacMan.map[yPos][oldPos] = "x";
-        }
-        PacMan.map[yPos][xPos] = ghostnum;
-        return true;
-      }
-      return false;
-    } else {      
-      return false;
     }
   }
+
+
+
 
   /*  void ghostmove(int pacx, int pacy,String ghostnum){
    int deltx=this.xPos-pacx;

@@ -7,7 +7,7 @@ class Player extends Character {
   int score;
   int numLives;
   int direction; // 1-up 2-down 3-right 4=left
-  String killedBy; // 1: Blinky, 2: Pinky, 3:Inky, 4:Clyde
+  String enemy; // 1: Blinky, 2: Pinky, 3:Inky, 4:Clyde
 
   Player() {
     super();
@@ -19,10 +19,40 @@ class Player extends Character {
     this.numLives=3;
     this.direction=0;
     // scoreSubmitted=false; already instantiated in main class
-    this.killedBy = null;
+    this.enemy = null;
   }
 
-  void encounter(Ghost a) {
+  //eating ghosts
+  void eat(String a) {   
+    //Blinky
+    if (a.equals("1")){
+      //PacMan.map[Blinky.yPos][Blinky.xPos] = "x";
+      Blinky.xPos = 15;
+      Blinky.yPos = 16;
+      PacMan.map[Blinky.yPos][Blinky.xPos] = "1";
+    }
+    //Pinky
+    else if (a.equals("2")){
+      //PacMan.map[Pinky.yPos][Pinky.xPos] = "x";
+      Pinky.xPos = 17;
+      Pinky.yPos = 16;
+      PacMan.map[Pinky.yPos][Pinky.xPos] = "2";
+    }
+    //Inky
+    else if (a.equals("3")){
+      //PacMan.map[Inky.yPos][Inky.xPos] = "x";
+      Inky.xPos = 15;
+      Inky.yPos = 17;
+      PacMan.map[Inky.yPos][Inky.xPos] = "3";
+      
+    }
+    //Clyde
+    else{
+      //PacMan.map[Clyde.yPos][Clyde.xPos] = "x";
+      Clyde.xPos = 17;
+      Clyde.yPos = 17;
+      PacMan.map[Clyde.yPos][Clyde.xPos] = "4";
+    }
   }
 
   /*
@@ -38,22 +68,22 @@ class Player extends Character {
 
   boolean touchingGhost() {
     if (this.xPos == Clyde.xPos && this.yPos == Clyde.yPos) {
-      killedBy = "4";
+      enemy = "4";
       //PacMan.map[this.yPos][this.xPos] = "4"; 
       return true;
     }
     if (this.xPos == Pinky.xPos && this.yPos == Pinky.yPos) {
-      killedBy = "2";
+      enemy = "2";
       //PacMan.map[this.yPos][this.xPos] = "2"; 
       return true;
     } 
     if (this.xPos == Inky.xPos && this.yPos == Inky.yPos) {
-      killedBy = "3";
+      enemy = "3";
       //PacMan.map[this.yPos][this.xPos] = "3"; 
       return true;
     }
     if (this.xPos == Blinky.xPos && this.yPos == Blinky.yPos) {
-      killedBy = "1";
+      enemy = "1";
       //PacMan.map[this.yPos][this.xPos] = "1"; 
       return true;
     }
@@ -67,17 +97,21 @@ class Player extends Character {
    */
   boolean move() {
     if (touchingGhost()) {
-      numLives--;
-      if (numLives==0) {
-
-        text("Game Over", xPos, yPos);
-        screen=3;
-        setMap();
-        return false;
+      if (this.state != 2) {
+        numLives--;
+        if (numLives==0) {
+          text("Game Over", xPos, yPos);
+          screen=3;
+          setMap();
+          return false;
+        } else {
+          //text("WHOOPS! A life you lose.", xPos, yPos);
+          endRound();
+          return false;
+        }
       } else {
-        text("WHOOPS! A life you lose.", xPos, yPos);
-        endRound();
-        return false;
+        eat(enemy);
+        return true;
       }
     } else {
       int oldPos;

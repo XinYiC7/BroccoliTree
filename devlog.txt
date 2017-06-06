@@ -101,4 +101,11 @@ Gian Tricarico :: Make Character class abstract and modify the constructors for 
 Gian Tricarico :: Modify instance vars and constructors and comment out unnecessary methods
                   Update UML diagram
 		  Make it so that ghosts can leave jail throughout the game rather than only at the beginning
-Melanie Chow:: Completed name insertion and score board: process text file and save to text file. Also made it so that it can save multiple highscores (score submitted everytime game is played).
+Melanie Chow:: Completed name insertion and score board: process text file and save to text file. 
+--------------------------------------------------------------
+2017-06-06
+--------------------------------------------------------------
+Melanie Chow:: Fixed highscore bug (index out of array error). Also made it so that it can save multiple highscores (score submitted everytime a new game is played). Made more images. Updated flow chart
+
+
+
