@@ -1,7 +1,6 @@
 // Team BroccoliTree
 // Roster: Gian "Giant" Tricarico, Xin Yi Chen, Melanie "MChow" Chow
 // APCS2 pd4
-boolean scoreSubmitted;
 
 class Player extends Character {
   String name;
@@ -9,6 +8,7 @@ class Player extends Character {
   int numLives;
   int direction; // 1-up 2-down 3-right 4=left
   String killedBy; // 1: Blinky, 2: Pinky, 3:Inky, 4:Clyde
+  boolean scoreSubmitted;
 
   Player() {
     super();
@@ -31,7 +31,8 @@ class Player extends Character {
    */
 
   String toString() {
-    String retStr = "";
+    String retStr = this.name;
+    retStr += "\nScore: " + this.score;
     return retStr;
   }
 
