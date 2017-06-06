@@ -4,7 +4,7 @@
 
 // import java.util.ArrayList; already imported by Processing
 import java.util.LinkedList;
-import java.util.concurrent.LinkedBlockingQueue;
+// import java.util.concurrent.LinkedBlockingQueue;
 //------------------------ Instance variables ------------------------
 
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
@@ -21,9 +21,9 @@ static ArrayList<Integer> highscores= new ArrayList<Integer>(10);
 static ArrayList<String> hsnames=new ArrayList<String>(10);
 Boolean scoreSubmitted = false;
 //eaten dots
-LinkedBlockingQueue<Dot> eaten = new LinkedBlockingQueue<Dot>();
+LLQueue<Dot> eaten = new LLQueue<Dot>();
 LinkedList<Ghost> liveGhosts;
-LinkedBlockingQueue<Ghost> jailedGhosts;
+LLQueue<Ghost> jailedGhosts;
 
 // int counter = 0; //We can use the built-in variable frameCount instead.
 
@@ -74,11 +74,11 @@ void setup() {
   Pinky = new Ghost("2", 17, 16);
   Inky = new Ghost("3", 15, 17);
   Clyde = new Ghost("4", 17, 17);
-  jailedGhosts = new LinkedBlockingQueue<Ghost>();
-  jailedGhosts.add(Blinky);
-  jailedGhosts.add(Pinky);
-  jailedGhosts.add(Inky);
-  jailedGhosts.add(Clyde);
+  jailedGhosts = new LLQueue<Ghost>();
+  jailedGhosts.enqueue(Blinky);
+  jailedGhosts.enqueue(Pinky);
+  jailedGhosts.enqueue(Inky);
+  jailedGhosts.enqueue(Clyde);
   liveGhosts = new LinkedList<Ghost>();
   setMap();
   setimages();
@@ -182,8 +182,8 @@ void draw() {
   }
 
   //dots reappear after 5 seconds
-  if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
-    reappear(eaten.remove());
+  if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peekFront().xPos) && (player.yPos != eaten.peekFront().yPos)) {
+    reappear(eaten.dequeue());
   }
 
   //print("xcoordinate: "+mouseX);
@@ -193,16 +193,21 @@ void draw() {
 // Takes a Ghost out of the jail, if there are any in the jail
 Ghost parole()
 {
-  Ghost freedGhost = jailedGhosts.poll();
-  if (freedGhost != null) {
-    map[freedGhost.yPos][freedGhost.xPos] = "j";
-    //println(map[freedGhost.yPos][freedGhost.xPos]);
-    freedGhost.xPos = 16;
-    freedGhost.yPos = 14;
-    map[freedGhost.yPos][freedGhost.xPos] = freedGhost.identity;
-    freedGhost.state = 1;
-    liveGhosts.add(freedGhost);
+  try {
+    Ghost freedGhost = jailedGhosts.dequeue();
   }
+  catch (NullPointerException exception) {
+    return null;
+  }
+  // if (freedGhost != null) {
+  map[freedGhost.yPos][freedGhost.xPos] = "j";
+  //println(map[freedGhost.yPos][freedGhost.xPos]);
+  freedGhost.xPos = 16;
+  freedGhost.yPos = 14;
+  map[freedGhost.yPos][freedGhost.xPos] = freedGhost.identity;
+  freedGhost.state = 1;
+  liveGhosts.add(freedGhost);
+  // }
   return freedGhost;
 }
 
@@ -233,9 +238,9 @@ void setScores() {
   String[] scorelines=loadStrings("highscores.txt");
   for (int i=0; i<scorelines.length; i++) {
     String[] separate=split(scorelines[i], ",");
-    if (separate.length==2){
-    hsnames.add(separate[0]);
-    highscores.add(int(separate[1]));
+    if (separate.length==2) {
+      hsnames.add(separate[0]);
+      highscores.add(int(separate[1]));
     }
   }
 }
@@ -390,10 +395,10 @@ void endRound() {
   map[28][24] = "@";
   /*
   Player newRound=new Player();
-  newRound.score=player.score;
-  newRound.name=player.name;
-  newRound.numLives=player.numLives;
-  player=newRound;*/
+   newRound.score=player.score;
+   newRound.name=player.name;
+   newRound.numLives=player.numLives;
+   player=newRound;*/
 }
 
 void endGame() {
