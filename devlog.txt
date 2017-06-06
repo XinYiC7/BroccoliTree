@@ -102,10 +102,12 @@ Gian Tricarico :: Modify instance vars and constructors and comment out unnecess
                   Update UML diagram
 		  Make it so that ghosts can leave jail throughout the game rather than only at the beginning
 Melanie Chow:: Completed name insertion and score board: process text file and save to text file. 
+Xin Yi Chen :: Completed the functions that allows the ghosts to eat the player
 --------------------------------------------------------------
 2017-06-06
 --------------------------------------------------------------
-Melanie Chow:: Fixed highscore bug (index out of array error). Also made it so that it can save multiple highscores (score submitted everytime a new game is played). Made more images. Updated flow chart
+Melanie Chow :: Fixed highscore bug (index out of array error). Also made it so that it can save multiple highscores (score submitted everytime a new game is played). Made more images. Updated flow chart
+Xin Yi Chen :: Completed the functions that allows the player to eat the ghosts with the use of power pellets.
 
 
 
