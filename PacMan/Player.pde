@@ -18,7 +18,7 @@ class Player extends Character {
     this.score=0;
     this.numLives=3;
     this.direction=0;
-    scoreSubmitted=false;
+    // scoreSubmitted=false;
   }
 
   void encounter(Ghost a) {
