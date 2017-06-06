@@ -18,7 +18,7 @@ class Player extends Character {
     this.score=0;
     this.numLives=3;
     this.direction=0;
-    // scoreSubmitted=false;
+    // scoreSubmitted=false; already instantiated in main class
   }
 
   void encounter(Ghost a) {
