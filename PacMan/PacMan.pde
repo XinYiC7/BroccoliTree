@@ -233,8 +233,10 @@ void setScores() {
   String[] scorelines=loadStrings("highscores.txt");
   for (int i=0; i<scorelines.length; i++) {
     String[] separate=split(scorelines[i], ",");
+    if (separate.length==2){
     hsnames.add(separate[0]);
     highscores.add(int(separate[1]));
+    }
   }
 }
 
@@ -328,7 +330,7 @@ boolean insertScore(int score) {
     if (score>highscores.get(i)) {
       highscores.add(i, score);
       if (player.name.equals("")) {
-        hsnames.add(i, "NONAME");
+        hsnames.add(i, "NO NAME");
       } else {
         hsnames.add(i, player.name);
       }
@@ -397,6 +399,7 @@ void endGame() {
   newguy.name=player.name;
   player.numLives=3;
   player=newguy;
+  scoreSubmitted=false;
 }
 
 //---------------------------MAP------------------------------------
