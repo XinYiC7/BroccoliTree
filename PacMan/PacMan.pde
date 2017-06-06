@@ -23,7 +23,7 @@ ALQueue<Dot> eaten = new ALQueue<Dot>();
 // int counter = 0; We can use the built-in variable frameCount instead.
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
-boolean setName=false;
+Boolean setName=false;
 //-----START SCREEN IMAGES & VARIABLES------
 PImage img; //startscreen
 
