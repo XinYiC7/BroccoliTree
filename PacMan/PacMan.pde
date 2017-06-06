@@ -17,6 +17,7 @@ Ghost Clyde; // orange Ghost
 static String[][] map = new String[32][32];
 static ArrayList<Integer> highscores= new ArrayList<Integer>(10);
 static ArrayList<String> hsnames=new ArrayList<String>(10);
+boolean scoreSubmitted;
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
 
