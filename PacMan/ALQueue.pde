@@ -10,7 +10,7 @@
  *
  ******************************************************/
 
-import java.util.ArrayList;
+// import java.util.ArrayList; already imported by Processing
 
 class ALQueue<T> 
 {

@@ -2,7 +2,9 @@
 // Roster: Gian "Giant" Tricarico, Xin Yi Chen, Melanie "MChow" Chow
 // APCS2 pd4
 
-import java.util.ArrayList;
+// import java.util.ArrayList; already imported by Processing
+import java.util.LinkedList;
+import java.util.concurrent.LinkedBlockingQueue;
 //------------------------ Instance variables ------------------------
 
 // Each block in the game's grid is made up of _blocksize * _blocksize pixels:
@@ -20,8 +22,10 @@ static ArrayList<String> hsnames=new ArrayList<String>(10);
 Boolean scoreSubmitted = false;
 //eaten dots
 ALQueue<Dot> eaten = new ALQueue<Dot>();
+LinkedList<Ghost> liveGhosts;
+LinkedBlockingQueue<Ghost> jailedGhosts;
 
-int counter = 0; //We can use the built-in variable frameCount instead.
+// int counter = 0; //We can use the built-in variable frameCount instead.
 
 int screen=0; //determines what is being shown on the screen 0=start 1=pacman 2=tower, etc
 Boolean setName=false;
@@ -70,6 +74,12 @@ void setup() {
   Pinky = new Ghost("2", 17, 16);
   Inky = new Ghost("3", 15, 17);
   Clyde = new Ghost("4", 17, 17);
+  jailedGhosts = new LinkedBlockingQueue<Ghost>();
+  jailedGhosts.add(Blinky);
+  jailedGhosts.add(Pinky);
+  jailedGhosts.add(Inky);
+  jailedGhosts.add(Clyde);
+  liveGhosts = new LinkedList<Ghost>();
   setMap();
   setimages();
   font=createFont("imagine_font.ttf", 20);
@@ -84,65 +94,75 @@ void draw() {
     endGame();
     drawStartScreen();
   } else if (screen==1) {
-    counter ++;
+    // counter ++;
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move();
 
-    //Blinky
-    if ( counter == 5) {
-      map[Blinky.yPos][Blinky.xPos] = "j";
-      //println(map[Blinky.yPos][Blinky.xPos]);
-      Blinky.xPos = 16;
-      Blinky.yPos = 14;
-      map[Blinky.yPos][Blinky.xPos] = "1";
-      Blinky.startMove = 1;
-    }
-    if (Blinky.startMove == 1) {
-      Blinky.move();
+    if (frameCount % 10 == 0) { // every 10 frames
+      parole();
     }
 
-    //Pinky
-    if ( counter == 20) {
-      map[Pinky.yPos][Pinky.xPos] = "j";
-      //println(map[Pinky.yPos][Pinky.xPos]);
-      Pinky.xPos = 16;
-      Pinky.yPos = 14;
-      map[Pinky.yPos][Pinky.xPos] = "2";
-      Pinky.startMove = 1;
-    }
-    if (Pinky.startMove == 1) {
-      Pinky.move();
+    for ( Ghost g : liveGhosts ) {
+      g.move();
     }
 
-    //Inky
-    if ( counter == 30) {
-      map[Inky.yPos][Inky.xPos] = "j";
-      //println(map[Inky.yPos][Inky.xPos]);
-      Inky.xPos = 16;
-      Inky.yPos = 14;
-      map[Inky.yPos][Inky.xPos] = "3";
-      Inky.startMove = 1;
-    }
-    //println(counter);
-    if (Inky.startMove == 1) {
-      Inky.move();
-    }
-
-    //Clyde
-    if ( counter == 40) {
-      map[Clyde.yPos][Clyde.xPos] = "j";
-      //println(map[Clyde.yPos][Clyde.xPos]);
-      Clyde.xPos = 16;
-      Clyde.yPos = 14;
-      map[Clyde.yPos][Clyde.xPos] = "4";
-      Clyde.startMove = 1;
-    }
-    //println(counter);
-    if (Clyde.startMove == 1) {
-      Clyde.move();
-    }
+    /*
+      //Blinky
+     if ( frameCount == 5) {
+     map[Blinky.yPos][Blinky.xPos] = "j";
+     //println(map[Blinky.yPos][Blinky.xPos]);
+     Blinky.xPos = 16;
+     Blinky.yPos = 14;
+     map[Blinky.yPos][Blinky.xPos] = "1";
+     Blinky.startMove = 1;
+     }
+     if (Blinky.startMove == 1) {
+     Blinky.move();
+     }
+     
+     //Pinky
+     if ( frameCount == 20) {
+     map[Pinky.yPos][Pinky.xPos] = "j";
+     //println(map[Pinky.yPos][Pinky.xPos]);
+     Pinky.xPos = 16;
+     Pinky.yPos = 14;
+     map[Pinky.yPos][Pinky.xPos] = "2";
+     Pinky.startMove = 1;
+     }
+     if (Pinky.startMove == 1) {
+     Pinky.move();
+     }
+     
+     //Inky
+     if ( frameCount == 30) {
+     map[Inky.yPos][Inky.xPos] = "j";
+     //println(map[Inky.yPos][Inky.xPos]);
+     Inky.xPos = 16;
+     Inky.yPos = 14;
+     map[Inky.yPos][Inky.xPos] = "3";
+     Inky.startMove = 1;
+     }
+     //println(counter);
+     if (Inky.startMove == 1) {
+     Inky.move();
+     }
+     
+     //Clyde
+     if ( frameCount == 40) {
+     map[Clyde.yPos][Clyde.xPos] = "j";
+     //println(map[Clyde.yPos][Clyde.xPos]);
+     Clyde.xPos = 16;
+     Clyde.yPos = 14;
+     map[Clyde.yPos][Clyde.xPos] = "4";
+     Clyde.startMove = 1;
+     }
+     //println(counter);
+     if (Clyde.startMove == 1) {
+     Clyde.move();
+     }
+     */
 
     //print(player.direction);
     fill(255, 255, 255);
@@ -162,12 +182,28 @@ void draw() {
   }
 
   //dots reappear after 5 seconds
-  if ((counter % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
+  if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
     reappear(eaten.dequeue());
   }
 
   //print("xcoordinate: "+mouseX);
   //print("ycoordinate:-->"+mouseY);
+}
+
+// Takes a Ghost out of the jail, if there are any in the jail
+Ghost parole()
+{
+  Ghost freedGhost = jailedGhosts.poll();
+  if (freedGhost != null) {
+    map[freedGhost.yPos][freedGhost.xPos] = "j";
+    //println(map[freedGhost.yPos][freedGhost.xPos]);
+    freedGhost.xPos = 16;
+    freedGhost.yPos = 14;
+    map[freedGhost.yPos][freedGhost.xPos] = freedGhost.identity;
+    freedGhost.state = 1;
+    liveGhosts.add(freedGhost);
+  }
+  return freedGhost;
 }
 
 void setimages() {

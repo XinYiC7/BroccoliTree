@@ -7,7 +7,7 @@ class Ghost extends Character {
 
   String oldpiece;
   String identity; //1:Blinky, 2:Pinky, 3:Inky, 4:Clyde
-  int startMove;
+  // int startMove; redundant because Ghost already inherits state variable from Character
 
   // constructor
   Ghost(String identity, int x, int y) {
@@ -16,6 +16,7 @@ class Ghost extends Character {
     this.xPos = x;
     this.yPos = y;
     this.state = 0; // ghosts start in jail
+    this.oldpiece = null;
   }
 
   boolean move() {
