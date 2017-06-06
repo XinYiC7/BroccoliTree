@@ -107,6 +107,7 @@ void draw() {
     }
 
     for ( Ghost g : liveGhosts ) {
+      //delay(500);
       g.move();
     }
 

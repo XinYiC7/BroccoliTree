@@ -30,9 +30,39 @@ class Ghost extends Character {
 
   boolean move(int x, String ghostnum) {
     int oldPos;
-    if ( this.xPos == player.xPos && this.yPos == player.yPos && player.state == 2) {
+    if ( this.xPos == player.xPos && this.yPos == player.yPos) {
+      if (player.state == 2) {
+        PacMan.map[this.yPos][this.xPos] = "@";
+        //println(PacMan.map[this.yPos][this.xPos]);
 
-      return false;
+        if (identity.equals("1")) {
+          this.xPos = 15;
+          this.yPos = 16;
+          PacMan.map[this.yPos][this.xPos] = identity;
+          liveGhosts.remove(Blinky);
+          jailedGhosts.enqueue(Blinky);
+        } else if (identity.equals("2")) {
+          this.xPos = 17;
+          this.yPos = 16;
+          PacMan.map[this.yPos][this.xPos] = identity;
+          liveGhosts.remove(Pinky);
+          jailedGhosts.enqueue(Pinky);
+        } else if (identity.equals("3")) {
+          this.xPos = 15;
+          this.yPos = 17;
+          PacMan.map[this.yPos][this.xPos] = identity;
+          liveGhosts.remove(Inky);
+          jailedGhosts.enqueue(Inky);
+        } else {
+          this.xPos = 17;
+          this.yPos = 17;
+          PacMan.map[this.yPos][this.xPos] = identity;
+          liveGhosts.remove(Clyde);
+          jailedGhosts.enqueue(Clyde);
+        }        
+        player.state = 1;
+      } 
+      return true;
     } else {
       if (x == 1) { // (up)
         if (!(PacMan.map[yPos-1][xPos].equals("#")|
@@ -49,16 +79,12 @@ class Ghost extends Character {
           this.oldpiece=PacMan.map[yPos-1][xPos];
           oldPos = yPos;
           yPos -= speed;
-
-          /*
           if (oldpiece.equals("@")) {
-           PacMan.map[oldPos][xPos] = "x";
-           if (player.state == 2) {
-           } else {
-           PacMan.map[yPos][xPos]= ghostnum;
-           }
-           } else { */
-          PacMan.map[oldPos][xPos] = oldpiece;
+            PacMan.map[oldPos][xPos] = "x";
+          } else {
+            PacMan.map[oldPos][xPos] = oldpiece;
+          }
+
           PacMan.map[yPos][xPos]= ghostnum;
           //}
           return true;
@@ -80,25 +106,15 @@ class Ghost extends Character {
           this.oldpiece=PacMan.map[yPos+1][xPos];
           oldPos = yPos;
           yPos += speed;        
-          /*
-        if (!oldpiece.equals("@")) {
-           PacMan.map[oldPos][xPos] = oldpiece;
-           } else {
-           PacMan.map[oldPos][xPos] = "x";
-           }
-           PacMan.map[yPos][xPos]= ghostnum;
-           */
-/*
+
           if (oldpiece.equals("@")) {
             PacMan.map[oldPos][xPos] = "x";
-            if (player.state == 2) {
-            } else {
-              PacMan.map[yPos][xPos]= ghostnum;
-            }
-          } else {  */ 
+          } else {
             PacMan.map[oldPos][xPos] = oldpiece;
-            PacMan.map[yPos][xPos]= ghostnum;
-        //  }
+          }
+
+          PacMan.map[yPos][xPos]= ghostnum;
+          //  }
           return true;
         } 
         return false;
@@ -118,24 +134,14 @@ class Ghost extends Character {
           this.oldpiece=PacMan.map[yPos][xPos+1];
           oldPos = xPos;
           xPos += speed;
-          /*
-        if (!oldpiece.equals("@")) {
-           PacMan.map[yPos][oldPos] = oldpiece;
-           } else {
-           PacMan.map[yPos][oldPos] = "x";
-           }
-           PacMan.map[yPos][xPos] = ghostnum;
-           */
-/*
+
           if (oldpiece.equals("@")) {
             PacMan.map[yPos][oldPos] = "x";
-            if (player.state == 2) {
-            } else {
-              PacMan.map[yPos][xPos]= ghostnum;
-            }
-          } else {    */
+          } else {
             PacMan.map[yPos][oldPos]= oldpiece;
-            PacMan.map[yPos][xPos]= ghostnum;
+          }
+
+          PacMan.map[yPos][xPos]= ghostnum;
           //}
 
           return true;
@@ -156,24 +162,14 @@ class Ghost extends Character {
           this.oldpiece=PacMan.map[yPos][xPos-1];
           oldPos = xPos;
           xPos -= speed;
-          /*
-        if (!oldpiece.equals("@")) {
-           PacMan.map[yPos][oldPos] = oldpiece;
-           } else {
-           PacMan.map[yPos][oldPos] = "x";
-           }
-           PacMan.map[yPos][xPos] = ghostnum;
-           */
-/*
+
           if (oldpiece.equals("@")) {
             PacMan.map[yPos][oldPos] = "x";
-            if (player.state == 2) {
-            } else {
-              PacMan.map[yPos][xPos]= ghostnum;
-            }
-          } else {*/
+          } else {
             PacMan.map[yPos][oldPos]= oldpiece;
-            PacMan.map[yPos][xPos]= ghostnum;
+          }
+
+          PacMan.map[yPos][xPos]= ghostnum;
           //}
           return true;
         }
@@ -182,39 +178,5 @@ class Ghost extends Character {
         return false;
       }
     }
-  }
-
-
-
-
-  /*  void ghostmove(int pacx, int pacy,String ghostnum){
-   int deltx=this.xPos-pacx;
-   int delty=this.xPos-pacy;
-   //ghost should move sideways
-   if (abs(deltx)>abs(delty)){
-   if (deltx>0){
-   this.move(4, ghostnum);
-   }
-   else{
-   this.move(3, ghostnum);
-   }
-   }
-   else{
-   if (delty>0){
-   this.move(1, ghostnum);
-   }
-   else {
-   this.move(2, ghostnum);
-   }
-   }
-   }*/
-
-  /*
-  boolean inJail() {
-   return false;
-   }
-   */
-
-  void normalize() {
   }
 }

@@ -8,6 +8,8 @@ class Player extends Character {
   int numLives;
   int direction; // 1-up 2-down 3-right 4=left
   String enemy; // 1: Blinky, 2: Pinky, 3:Inky, 4:Clyde
+  int xDeathPos;
+  int yDeathPos;
 
   Player() {
     super();
@@ -23,42 +25,11 @@ class Player extends Character {
   }
 
   //eating ghosts
-  void eat(String a) {   
-    //Blinky
-    if (a.equals("1")){
-      //PacMan.map[Blinky.yPos][Blinky.xPos] = "x";
-      Blinky.xPos = 15;
-      Blinky.yPos = 16;
-      PacMan.map[Blinky.yPos][Blinky.xPos] = "1";
-    }
-    //Pinky
-    else if (a.equals("2")){
-      //PacMan.map[Pinky.yPos][Pinky.xPos] = "x";
-      Pinky.xPos = 17;
-      Pinky.yPos = 16;
-      PacMan.map[Pinky.yPos][Pinky.xPos] = "2";
-    }
-    //Inky
-    else if (a.equals("3")){
-      //PacMan.map[Inky.yPos][Inky.xPos] = "x";
-      Inky.xPos = 15;
-      Inky.yPos = 17;
-      PacMan.map[Inky.yPos][Inky.xPos] = "3";
-      
-    }
-    //Clyde
-    else{
-      //PacMan.map[Clyde.yPos][Clyde.xPos] = "x";
-      Clyde.xPos = 17;
-      Clyde.yPos = 17;
-      PacMan.map[Clyde.yPos][Clyde.xPos] = "4";
-    }
+  void eat(String a) {  
+    score += 100;
+    PacMan.map[this.yPos][this.xPos] = "@";
+    delay(500);
   }
-
-  /*
-  void eat(Dot a) {
-   }
-   */
 
   public String toString() {
     String retStr = this.name;
@@ -97,7 +68,10 @@ class Player extends Character {
    */
   boolean move() {
     if (touchingGhost()) {
-      if (this.state != 2) {
+      if (this.state == 2) {
+        eat(enemy);
+        return true;
+      } else {
         numLives--;
         if (numLives==0) {
           text("Game Over", xPos, yPos);
@@ -109,9 +83,6 @@ class Player extends Character {
           endRound();
           return false;
         }
-      } else {
-        eat(enemy);
-        return true;
       }
     } else {
       int oldPos;
@@ -247,11 +218,4 @@ class Player extends Character {
       }
     }
   }
-  /*
-  void loseLive() {
-   this.xPos = 24;
-   this.yPos = 28;
-   PacMan.map[this.yPos][this.xPos] = "@";
-   numLives--;
-   }*/
 }
