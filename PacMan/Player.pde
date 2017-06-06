@@ -72,7 +72,7 @@ class Player extends Character {
         return false;
       } else {
         text("WHOOPS! A life you lose.", xPos, yPos);
-        
+
         endRound();
         return false;
       }
@@ -210,11 +210,11 @@ class Player extends Character {
       }
     }
   }
-/*
+  /*
   void loseLive() {
-    this.xPos = 24;
-    this.yPos = 28;
-    PacMan.map[this.yPos][this.xPos] = "@";
-    numLives--;
-  }*/
+   this.xPos = 24;
+   this.yPos = 28;
+   PacMan.map[this.yPos][this.xPos] = "@";
+   numLives--;
+   }*/
 }

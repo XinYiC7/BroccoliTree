@@ -65,10 +65,10 @@ void miniGame()
 void setup() {
   size(680, 720);
   background(0, 0, 0);
-  Blinky = new Ghost("1",15, 16);
-  Pinky = new Ghost("2",17, 16);
-  Inky = new Ghost("3",15, 17);
-  Clyde = new Ghost("4",17, 17);
+  Blinky = new Ghost("1", 15, 16);
+  Pinky = new Ghost("2", 17, 16);
+  Inky = new Ghost("3", 15, 17);
+  Clyde = new Ghost("4", 17, 17);
   setMap();
   setimages();
   font=createFont("imagine_font.ttf", 20);
@@ -82,14 +82,13 @@ void draw() {
   if (screen==0) {
     endGame();
     drawStartScreen();
-  } 
-  else if (screen==1) {
+  } else if (screen==1) {
     // counter ++;
     background(0, 0, 0);
     drawMap();
     frameRate(6);
     player.move();
-    
+
     //Blinky
     if ( frameCount == 5) {
       map[Blinky.yPos][Blinky.xPos] = "j";
@@ -99,10 +98,10 @@ void draw() {
       map[Blinky.yPos][Blinky.xPos] = "1";
       Blinky.startMove = 1;
     }
-    if (Blinky.startMove == 1){
+    if (Blinky.startMove == 1) {
       Blinky.move();
     }
-    
+
     //Pinky
     if ( frameCount == 20) {
       map[Pinky.yPos][Pinky.xPos] = "j";
@@ -112,10 +111,10 @@ void draw() {
       map[Pinky.yPos][Pinky.xPos] = "2";
       Pinky.startMove = 1;
     }
-    if (Pinky.startMove == 1){
+    if (Pinky.startMove == 1) {
       Pinky.move();
     }
-    
+
     //Inky
     if ( frameCount == 30) {
       map[Inky.yPos][Inky.xPos] = "j";
@@ -126,10 +125,10 @@ void draw() {
       Inky.startMove = 1;
     }
     //println(counter);
-    if (Inky.startMove == 1){
+    if (Inky.startMove == 1) {
       Inky.move();
     }
-    
+
     //Clyde
     if ( frameCount == 40) {
       map[Clyde.yPos][Clyde.xPos] = "j";
@@ -140,16 +139,15 @@ void draw() {
       Clyde.startMove = 1;
     }
     //println(counter);
-    if (Clyde.startMove == 1){
+    if (Clyde.startMove == 1) {
       Clyde.move();
     }
-    
+
     //print(player.direction);
     fill(255, 255, 255);
-        if (player.name.length()==0){
+    if (player.name.length()==0) {
       text("NAME: Start Typing to Enter", 60, 50);
-    }
-    else {
+    } else {
       text("NAME:  "+player.name, 60, 50);
     }
     fill (255, 25, 0);
@@ -194,10 +192,10 @@ void setimages() {
   blueghost = loadImage("blueghost.png");
 }
 
-void setScores(){
+void setScores() {
   String[] scorelines=loadStrings("highscores.txt");
-  for (int i=0; i<scorelines.length;i++){
-    String[] separate=split(scorelines[i],",");
+  for (int i=0; i<scorelines.length; i++) {
+    String[] separate=split(scorelines[i], ",");
     hsnames.add(separate[0]);
     highscores.add(int(separate[1]));
   }
@@ -268,39 +266,36 @@ void drawh2p() { //draw how 2 play screen
 
 void drawhs() { //draw high score screen
   image(highscoretab, 0, 0);
-  text("Your score: "+ player.score, 230,200);
-  if (!scoreSubmitted){
-  insertScore(player.score);
+  text("Your score: "+ player.score, 230, 200);
+  if (!scoreSubmitted) {
+    insertScore(player.score);
   }
-  for (int i=0; i<10; i++){
-    if (i>hsnames.size()-1){
+  for (int i=0; i<10; i++) {
+    if (i>hsnames.size()-1) {
       text(i+1+". ", 200, 270+(20*i));
-    }
-    else {
+    } else {
       text(i+1+". "+hsnames.get(i)+" :  "+highscores.get(i), 200, 270+(20*i));
     }
   }
   if (overhome()) {
     image(homebutton2, 0, 0);
-  } 
-  else {
+  } else {
     image(homebutton1, 0, 0);
   }
 }
 
-boolean insertScore(int score){
+boolean insertScore(int score) {
   String input="";
   scoreSubmitted=true;
-  for (int i=0; i<highscores.size(); i++){
-    if (score>highscores.get(i)){
-      highscores.add(i,score);
-      if (player.name.equals("")){
-        hsnames.add(i,"NONAME");
+  for (int i=0; i<highscores.size(); i++) {
+    if (score>highscores.get(i)) {
+      highscores.add(i, score);
+      if (player.name.equals("")) {
+        hsnames.add(i, "NONAME");
+      } else {
+        hsnames.add(i, player.name);
       }
-      else{
-        hsnames.add(i,player.name);
-      }
-      for (int j=0;j<highscores.size();j++){
+      for (int j=0; j<highscores.size(); j++) {
         input+=hsnames.get(j)+","+highscores.get(j)+" ";
       }
       String[] newhs=split(input, " ");
@@ -347,9 +342,9 @@ boolean overhome() {
   }
 }
 
-void endRound(){
-  fill(255,255,255);
-  text("oops! you lost a life. You have "+player.numLives+" lives left.", 90,100);
+void endRound() {
+  fill(255, 255, 255);
+  text("oops! you lost a life. You have "+player.numLives+" lives left.", 90, 100);
   Player newRound=new Player();
   newRound.score=player.score;
   newRound.name=player.name;
@@ -357,8 +352,8 @@ void endRound(){
   player=newRound;
 }
 
-void endGame(){
-  background(0,0,0);
+void endGame() {
+  background(0, 0, 0);
   screen=0;
   setMap();
   Player newguy=new Player();
@@ -517,24 +512,19 @@ void keyPressed() {
       player.direction=4;
     } else {
     }
-  }
-  else {
-    if (setName){
-    }
-    else {
-    if (key==ENTER | key==RETURN){
-      setName=true;
-    }
-  else if (key==BACKSPACE){
-      if (player.name.length()>=1){
-      player.name=player.name.substring(0,player.name.length()-1);
+  } else {
+    if (setName) {
+    } else {
+      if (key==ENTER | key==RETURN) {
+        setName=true;
+      } else if (key==BACKSPACE) {
+        if (player.name.length()>=1) {
+          player.name=player.name.substring(0, player.name.length()-1);
+        } else {
+        }
+      } else {
+        player.name+=key;
       }
-      else {
-      }
     }
-    else {
-    player.name+=key;
-    }
-  }
   }
 }
