@@ -195,26 +195,12 @@ void setimages() {
 }
 
 void setScores(){
-  highscores.add(200); 
-  highscores.add(100);
-  highscores.add(30);
-  highscores.add(4);
-  highscores.add(0);
-  highscores.add(0);
-  highscores.add(0);
-  highscores.add(0);
-  highscores.add(0);
-  highscores.add(0);
-  hsnames.add("br");
-  hsnames.add("oc");
-  hsnames.add("co");
-  hsnames.add("li");
-  hsnames.add("tr");
-  hsnames.add("ee");
-  hsnames.add("");
-  hsnames.add("");
-  hsnames.add("");
-  hsnames.add("");
+  String[] scorelines=loadStrings("highscores.txt");
+  for (int i=0; i<scorelines.length;i++){
+    String[] separate=split(scorelines[i],",");
+    hsnames.add(separate[0]);
+    highscores.add(int(separate[1]));
+  }
 }
 
 void mouseClicked() {
@@ -287,7 +273,12 @@ void drawhs() { //draw high score screen
   insertScore(player.score);
   }
   for (int i=0; i<10; i++){
-    text(i+1+". "+hsnames.get(i)+" :  "+highscores.get(i), 200, 270+(20*i));
+    if (i>hsnames.size()-1){
+      text(i+1+". ", 200, 270+(20*i));
+    }
+    else {
+      text(i+1+". "+hsnames.get(i)+" :  "+highscores.get(i), 200, 270+(20*i));
+    }
   }
   if (overhome()) {
     image(homebutton2, 0, 0);
@@ -298,6 +289,7 @@ void drawhs() { //draw high score screen
 }
 
 boolean insertScore(int score){
+  String input="";
   scoreSubmitted=true;
   for (int i=0; i<highscores.size(); i++){
     if (score>highscores.get(i)){
@@ -308,9 +300,14 @@ boolean insertScore(int score){
       else{
         hsnames.add(i,player.name);
       }
+      for (int j=0;j<highscores.size();j++){
+        input+=hsnames.get(j)+","+highscores.get(j)+" ";
+      }
+      String[] newhs=split(input, " ");
+      saveStrings("highscores.txt", newhs);
       return true;
     }
-  }
+  } 
   return false;
 }
 
