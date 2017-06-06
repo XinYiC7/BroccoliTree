@@ -69,13 +69,13 @@ class Player extends Character {
     if (touchingGhost()) {
       numLives--;
       if (numLives==0) {
+
         text("Game Over", xPos, yPos);
         screen=3;
         setMap();
         return false;
       } else {
         text("WHOOPS! A life you lose.", xPos, yPos);
-
         endRound();
         return false;
       }

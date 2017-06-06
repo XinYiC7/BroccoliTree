@@ -46,7 +46,12 @@ class Ghost extends Character {
         this.oldpiece=PacMan.map[yPos-1][xPos];
         oldPos = yPos;
         yPos -= speed;
-        PacMan.map[oldPos][xPos] = oldpiece;
+        if (!oldpiece.equals("@")) {
+          PacMan.map[oldPos][xPos] = oldpiece;
+        }
+        else{
+          PacMan.map[oldPos][xPos] = "x";
+        }
         PacMan.map[yPos][xPos]= ghostnum;
 
         return true;
@@ -68,7 +73,12 @@ class Ghost extends Character {
         this.oldpiece=PacMan.map[yPos+1][xPos];
         oldPos = yPos;
         yPos += speed;        
-        PacMan.map[oldPos][xPos] = oldpiece;
+        if (!oldpiece.equals("@")) {
+          PacMan.map[oldPos][xPos] = oldpiece;
+        }
+        else{
+          PacMan.map[oldPos][xPos] = "x";
+        }
         PacMan.map[yPos][xPos]= ghostnum;
 
         return true;
@@ -90,7 +100,12 @@ class Ghost extends Character {
         this.oldpiece=PacMan.map[yPos][xPos+1];
         oldPos = xPos;
         xPos += speed;
-        PacMan.map[yPos][oldPos] = oldpiece;       
+        if (!oldpiece.equals("@")) {
+          PacMan.map[yPos][oldPos] = oldpiece;
+        }
+        else{
+          PacMan.map[yPos][oldPos] = "x";
+        }
         PacMan.map[yPos][xPos] = ghostnum;
 
         return true;
@@ -111,7 +126,12 @@ class Ghost extends Character {
         this.oldpiece=PacMan.map[yPos][xPos-1];
         oldPos = xPos;
         xPos -= speed;
-        PacMan.map[yPos][oldPos] = oldpiece;
+        if (!oldpiece.equals("@")) {
+          PacMan.map[yPos][oldPos] = oldpiece;
+        }
+        else{
+          PacMan.map[yPos][oldPos] = "x";
+        }
         PacMan.map[yPos][xPos] = ghostnum;
         return true;
       }

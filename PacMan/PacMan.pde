@@ -384,11 +384,16 @@ boolean overhome() {
 void endRound() {
   fill(255, 255, 255);
   text("oops! you lost a life. You have "+player.numLives+" lives left.", 90, 100);
+  map[player.yPos][player.xPos] = "#";
+  player.xPos = 24;
+  player.yPos = 28;
+  map[28][24] = "@";
+  /*
   Player newRound=new Player();
   newRound.score=player.score;
   newRound.name=player.name;
   newRound.numLives=player.numLives;
-  player=newRound;
+  player=newRound;*/
 }
 
 void endGame() {
