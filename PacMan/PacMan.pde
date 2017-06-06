@@ -21,7 +21,7 @@ static ArrayList<Integer> highscores= new ArrayList<Integer>(10);
 static ArrayList<String> hsnames=new ArrayList<String>(10);
 Boolean scoreSubmitted = false;
 //eaten dots
-ALQueue<Dot> eaten = new ALQueue<Dot>();
+LinkedBlockingQueue<Dot> eaten = new LinkedBlockingQueue<Dot>();
 LinkedList<Ghost> liveGhosts;
 LinkedBlockingQueue<Ghost> jailedGhosts;
 
@@ -183,7 +183,7 @@ void draw() {
 
   //dots reappear after 5 seconds
   if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peek().xPos) && (player.yPos != eaten.peek().yPos)) {
-    reappear(eaten.dequeue());
+    reappear(eaten.remove());
   }
 
   //print("xcoordinate: "+mouseX);

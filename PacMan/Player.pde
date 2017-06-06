@@ -96,18 +96,18 @@ class Player extends Character {
           PacMan.map[yPos][xPos] = "@";
           if (PacMan.map[yPos-1][xPos].equals("d")) {
             eatenDot = new Dot(1, xPos, yPos-1);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=10;
           }
           if (PacMan.map[yPos-1][xPos].equals("p")) {
             eatenDot = new Dot(2, xPos, yPos-1);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=50;
             this.state = 2;
           }
           if (PacMan.map[yPos-1][xPos].equals("b")) {
             eatenDot = new Dot(3, xPos, yPos-1);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=30;
           }
           return true;
@@ -127,18 +127,18 @@ class Player extends Character {
           PacMan.map[yPos][xPos]= "@";
           if (PacMan.map[yPos+1][xPos].equals("d")) {
             eatenDot = new Dot(1, xPos, yPos+1);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=10;
           }
           if (PacMan.map[yPos+1][xPos].equals("p")) {
             eatenDot = new Dot(2, xPos, yPos+1);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=50;
             this.state = 2;
           }
           if (PacMan.map[yPos+1][xPos].equals("b")) {
             eatenDot = new Dot(3, xPos, yPos+1);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=30;
           }        
           return true;
@@ -159,18 +159,18 @@ class Player extends Character {
           PacMan.map[yPos][xPos] = "@";
           if (PacMan.map[yPos][xPos+1].equals("d")) {
             eatenDot = new Dot(1, xPos+1, yPos);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=10;
           }
           if (PacMan.map[yPos][xPos+1].equals("p")) {
             eatenDot = new Dot(2, xPos+1, yPos);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=50;
             this.state = 2;
           }
           if (PacMan.map[yPos][xPos+1].equals("b")) {
             eatenDot = new Dot(3, xPos+1, yPos);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=30;
           }        
           return true;
@@ -191,18 +191,18 @@ class Player extends Character {
           PacMan.map[yPos][xPos] = "@";
           if (PacMan.map[yPos][xPos-1].equals("d")) {
             eatenDot = new Dot(1, xPos-1, yPos);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=10;
           }
           if (PacMan.map[yPos][xPos-1].equals("p")) {
             eatenDot = new Dot(2, xPos-1, yPos);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=50;
             this.state = 2;
           }
           if (PacMan.map[yPos][xPos-1].equals("b")) {
             eatenDot = new Dot(3, xPos-1, yPos);
-            eaten.enqueue(eatenDot);
+            eaten.add(eatenDot);
             this.score+=30;
           } 
           return true;
