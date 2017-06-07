@@ -39,6 +39,9 @@ LESSONS LEARNED:
 -In Processing, you don't need accessors and mutators because the variables
 and methods have a default privacy such that all of the files in the folder can
 access them.
+-Communication is key.
+-Comments are really important, makes understanding someone else's code and finding parts of code you want to edit WAY easier.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 2017-05-18
