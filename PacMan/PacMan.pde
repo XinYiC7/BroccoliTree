@@ -102,7 +102,7 @@ void draw() {
     frameRate(6);
     player.move();
 
-    if (frameCount % 36 == 0) { // every 36 frames
+    if (frameCount % 36 == 0) { // every 36 frames = 6 secs
       parole();
     }
 
@@ -135,8 +135,8 @@ void draw() {
     drawhs();
   }
 
-  //dots reappear after 5 seconds
-  if ((frameCount % 5 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peekFront().xPos) && (player.yPos != eaten.peekFront().yPos)) {
+  //dots reappear after 4 seconds
+  if ((frameCount % 24 == 0) && (!eaten.isEmpty()) && (player.xPos != eaten.peekFront().xPos) && (player.yPos != eaten.peekFront().yPos)) {
     reappear(eaten.dequeue());
   }
 
