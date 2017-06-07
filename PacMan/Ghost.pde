@@ -20,6 +20,7 @@ class Ghost extends Character {
   }
 
   boolean move() {
+    
     int direction = ((int)random(4))+1;
     while (!(move(direction, this.identity))) {
       direction = ((int)random(4))+1;

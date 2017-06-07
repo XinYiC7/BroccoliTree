@@ -58,7 +58,7 @@ PImage redghost;
 PImage pinkghost;
 PImage orangeghost;
 PImage blueghost;
-
+PImage weakghost;
 //---------- Methods ------------------------
 
 /*
@@ -187,6 +187,7 @@ void setimages() {
   pinkghost = loadImage("pinkghost.png");
   orangeghost = loadImage("orangeghost.png");
   blueghost = loadImage("blueghost.png");
+  weakghost= loadImage("weakghost.png");
 }
 
 void setScores() {
@@ -436,30 +437,45 @@ void drawMap() {
 
       // Red Ghost:
       else if ( map[a][b].equals("1") ) {
-        if (Blinky.state == 0) {
+        if (player.state == 2) {
+          image(weakghost,b*_blocksize, a*_blocksize +75);
+          Blinky.state=2;
         }
+        else{
         image(redghost, b * _blocksize, a * _blocksize + 75);
       }
-
+      }
       // Pink Ghost:
       else if ( map[a][b].equals("2") ) {
-        if (Pinky.state == 0) {
+        if (player.state == 2) {
+          image(weakghost,b*_blocksize, a*_blocksize +75);
+          Pinky.state=2;
         }
+        else{
         image(pinkghost, b * _blocksize, a * _blocksize + 75);
+      }
       }
 
       // Blue (Cyan) Ghost:
       else if ( map[a][b].equals("3") ) {
-        if (Inky.state == 0) {
+        if (player.state == 2) {
+          image(weakghost,b*_blocksize, a*_blocksize +75);
+          Inky.state=2;
         }
+        else{
         image(blueghost, b * _blocksize, a * _blocksize + 75);
+      }
       }
 
       // Orange Ghost:
       else if ( map[a][b].equals("4") ) {
-        if (Clyde.state == 0) {
+        if (player.state == 2) {
+          image(weakghost,b*_blocksize, a*_blocksize +75);
+          Clyde.state=2;
         }
+        else{
         image(orangeghost, b * _blocksize, a * _blocksize + 75);
+      }
       }
       // Jail for ghosts:
       else if (map[a][b].equals("j")) {
