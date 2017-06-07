@@ -28,6 +28,7 @@ class Player extends Character {
   void eat(String a) {  
     score += 100;
     PacMan.map[this.yPos][this.xPos] = "@";
+    score+=100;
     delay(500);
   }
 
@@ -75,7 +76,7 @@ class Player extends Character {
         numLives--;
         if (numLives==0) {
           text("Game Over", xPos, yPos);
-          screen=3;
+          screen=3; //bring to hs
           setMap();
           return false;
         } else {

@@ -59,6 +59,8 @@ PImage pinkghost;
 PImage orangeghost;
 PImage blueghost;
 PImage weakghost;
+
+PImage broctree;
 //---------- Methods ------------------------
 
 /*
@@ -190,6 +192,7 @@ void setimages() {
   orangeghost = loadImage("orangeghost.png");
   blueghost = loadImage("blueghost.png");
   weakghost= loadImage("weakghost.png");
+  broctree=loadImage("broctree.png");
 }
 
 void setScores() {
@@ -250,18 +253,19 @@ void drawh2p() { //draw how 2 play screen
   }
   fill(255, 255, 255);
   text("The goal of the game is to get the highest", 80, 210); 
-  text("number of points. You don't need to eat all", 80, 240); 
+  text("number of points. You don't need to eat ALL", 80, 240); 
   text("the dots. Just don't get touched by a ghost!", 80, 270);
   fill(255, 25, 0);
-  text("+Use the arrow keys to move", 170, 330); 
-  text("+Eat power pellets to destroy ghosts!", 110, 350);
-  text("+Bonus rounds once you reach 5000!", 120, 370);
-  text("+You have 3 Lives!", 210, 390);
+  text("+Use the arrow keys to move", 150, 330); 
+  text("+Eat power pellets to destroy a ghost!", 100, 350);
+  text("+Once you eat a ghost, your power is OVER.", 90, 370);
+  text("+The pellets reappear!", 190, 390);
+  text("+You have 3 Lives, then you're out!", 140, 410);
 
   fill(255, 238, 0);
   text("+Dots-10 points", 230, 450);
-  text("+Ghosts-50 points", 200, 470);
-  text("+Broccoli Tree-30 points!", 160, 490);
+  text("+Broccoli Tree-30 points!", 200, 470);
+  text("+Ghosts-100 points", 160, 490);
   fill (0, 25, 255);
   text("Get chompin', champ", 220, 550);
 }
@@ -375,6 +379,21 @@ void endGame() {
   player.numLives=3;
   player=newguy;
   scoreSubmitted=false;
+  /*Ghost blinky = new Ghost("1", 15, 16);
+  Blinky=blinky;
+  Ghost pinky = new Ghost("2", 17, 16);
+  Pinky=pinky;
+  Ghost inky = new Ghost("3", 15, 17);
+  Inky=inky;
+  Ghost clyde = new Ghost("4", 17, 17);
+  Clyde=clyde;
+  LLQueue<Ghost> JailedGhosts = new LLQueue<Ghost>();
+  JailedGhosts.enqueue(Blinky);
+  JailedGhosts.enqueue(Pinky);
+  JailedGhosts.enqueue(Inky);
+  JailedGhosts.enqueue(Clyde);
+  jailedGhosts=JailedGhosts;
+  */
 }
 
 //---------------------------MAP------------------------------------
@@ -413,9 +432,7 @@ void drawMap() {
       } 
       //broccoli tree
       else if (map[a][b].equals("b")) {
-        //stroke(255, 0, 0);
-        fill(255, 0, 0);
-        rect(b*_blocksize, a*_blocksize+75, _blocksize, _blocksize);
+        image(broctree,b*_blocksize, a*_blocksize+75);
       } 
       //PACMAN
       else if (map[a][b].equals("@")) {
