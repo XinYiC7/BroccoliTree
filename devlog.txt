@@ -10,7 +10,7 @@ OBSTACLES OVERCOME:
 -How to insert a new name and start a new game once user goes back to home.
 -How to restart the round (move PacMan and ghosts back to original position,but no the dots);
 -Ghosts not longer make copies of themselves and walls do not disappear when they move
--
+-Fixed: When PacMan dies he leaves his body there <this becomes inactive>.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNRESOLVED ISSUES:
@@ -18,7 +18,6 @@ UNRESOLVED ISSUES:
 -When a dot reappears in the space that Pacman is in currently, Pacman
 temporarily disappears because the @ symbol in maze.txt gets replaced with a d
 (or p or b).
--When PacMan dies he leaves his body there <this becomes inactive>.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
@@ -108,6 +107,7 @@ Xin Yi Chen :: Completed the functions that allows the ghosts to eat the player
 --------------------------------------------------------------
 Melanie Chow :: Fixed highscore bug (index out of array error). Also made it so that it can save multiple highscores (score submitted everytime a new game is played). Made more images. Updated flow chart
 Xin Yi Chen :: Completed the functions that allows the player to eat the ghosts with the use of power pellets.
-
+Gian Tricarico :: Add in LLQueue for the reappearing dots and the ghosts in the jail.
+                  Debug so that the game does not crash while it is running.
 
 
