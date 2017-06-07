@@ -8,9 +8,10 @@ PACMAN
 
 OBSTACLES OVERCOME:
 -How to insert a new name and start a new game once user goes back to home.
--How to restart the round (move PacMan and ghosts back to original position,but no the dots);
--Ghosts not longer make copies of themselves and walls do not disappear when they move
--Fixed: When PacMan dies he leaves his body there <this becomes inactive>.
+-How to restart the round (move PacMan back to original position, but not the dots);
+-Ghosts not longer make copies of themselves and walls do not disappear when they MOVE.
+-When PacMan died he used to leave his body there <this becomes inactive>.
+>>>>>>> e125f5f1d9c07599d33082d3b668555babc6507e
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNRESOLVED ISSUES:
@@ -18,6 +19,8 @@ UNRESOLVED ISSUES:
 -When a dot reappears in the space that Pacman is in currently, Pacman
 temporarily disappears because the @ symbol in maze.txt gets replaced with a d
 (or p or b).
+-When a new game is started after a round (without reopening the window), there will be ghost images still in the jail.
+Functionality is fine though.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
@@ -29,6 +32,7 @@ How to save text in a file.
 MID-DEVELOPMENT DESIGN CHANGES: 
 -Make the background using a txt file instead of loading images and pixels
 -Making pacman move through the 2d array, rather than being on top and checking the pixel background.
+-Make it so that PacMan has the power-pellet power until he eats a ghost.
 -Take out of the tower game due to lack of time.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -36,6 +40,8 @@ LESSONS LEARNED:
 -In Processing, you don't need accessors and mutators because the variables
 and methods have a default privacy such that all of the files in the folder can
 access them.
+-Communication is key.
+-Comments are really important, makes understanding someone else's code and finding parts of code you want to edit WAY easier.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -105,9 +111,6 @@ Xin Yi Chen :: Completed the functions that allows the ghosts to eat the player
 --------------------------------------------------------------
 2017-06-06
 --------------------------------------------------------------
-Melanie Chow :: Fixed highscore bug (index out of array error). Also made it so that it can save multiple highscores (score submitted everytime a new game is played). Made more images. Updated flow chart
+Melanie Chow :: Fixed highscore bug (index out of array error). Also made it so that it can save multiple highscores (score submitted everytime a new game is played). Made more images. Updated flow chart and instructions.
 Xin Yi Chen :: Completed the functions that allows the player to eat the ghosts with the use of power pellets.
-Gian Tricarico :: Add in LLQueue for the reappearing dots and the ghosts in the jail.
-                  Debug so that the game does not crash while it is running.
-
-
+Gian Tricarico:: Brought back queue files, fixed crashing bug.
