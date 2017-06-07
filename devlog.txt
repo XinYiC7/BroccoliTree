@@ -8,9 +8,9 @@ PACMAN
 
 OBSTACLES OVERCOME:
 -How to insert a new name and start a new game once user goes back to home.
--How to restart the round (move PacMan and ghosts back to original position,but no the dots);
--Ghosts not longer make copies of themselves and walls do not disappear when they move
--
+-How to restart the round (move PacMan back to original position, but not the dots);
+-Ghosts not longer make copies of themselves and walls do not disappear when they MOVE.
+-When PacMan died he used to leave his body there <this becomes inactive>.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNRESOLVED ISSUES:
@@ -18,7 +18,8 @@ UNRESOLVED ISSUES:
 -When a dot reappears in the space that Pacman is in currently, Pacman
 temporarily disappears because the @ symbol in maze.txt gets replaced with a d
 (or p or b).
--When PacMan dies he leaves his body there <this becomes inactive>.
+-When a new game is started after a round (without reopening the window), there will be ghost images still in the jail.
+Functionality is fine though.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 COOL STUFF LEARNED:
@@ -30,6 +31,7 @@ How to save text in a file.
 MID-DEVELOPMENT DESIGN CHANGES: 
 -Make the background using a txt file instead of loading images and pixels
 -Making pacman move through the 2d array, rather than being on top and checking the pixel background.
+-Make it so that PacMan has the power-pellet power until he eats a ghost.
 -Take out of the tower game due to lack of time.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -37,7 +39,6 @@ LESSONS LEARNED:
 -In Processing, you don't need accessors and mutators because the variables
 and methods have a default privacy such that all of the files in the folder can
 access them.
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 2017-05-18
