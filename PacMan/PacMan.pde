@@ -106,9 +106,11 @@ void draw() {
       parole();
     }
 
-    for ( Ghost g : liveGhosts ) {
+    // for ( Ghost g : liveGhosts ) { Makes the program crash after a little while for some reason
+      for (int i = 0; i < liveGhosts.size(); i+=1) {
       //delay(500);
-      g.move();
+      // g.move();
+      liveGhosts.get(i).move();
     }
 
     if (endRoundCtr == 12) {
